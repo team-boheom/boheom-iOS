@@ -35,6 +35,9 @@
 		4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */; };
 		4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */; };
 		4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */; };
+		4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC22B542253007F7A3F /* ViewModelType.swift */; };
+		4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC42B5422F4007F7A3F /* BaseVC.swift */; };
+		4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
 		4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		4B8A4CC22B542253007F7A3F /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		4B8A4CC42B5422F4007F7A3F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 		4B11814F2B53A61400B1C04D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4CC12B542241007F7A3F /* Base */,
 				4B1181502B53A71C00B1C04D /* Scene */,
 			);
 			path = Source;
@@ -148,7 +155,7 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */,
+				4B8A4CC82B5425F3007F7A3F /* onBoarding */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -202,6 +209,24 @@
 				4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		4B8A4CC12B542241007F7A3F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CC22B542253007F7A3F /* ViewModelType.swift */,
+				4B8A4CC42B5422F4007F7A3F /* BaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4B8A4CC82B5425F3007F7A3F /* onBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */,
+				4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */,
+			);
+			path = onBoarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +331,10 @@
 				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
+				4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */,
+				4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
+				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
 				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
 			);
