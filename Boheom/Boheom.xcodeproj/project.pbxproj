@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1181382B53A5A500B1C04D /* AppDelegate.swift */; };
 		4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11813A2B53A5A500B1C04D /* SceneDelegate.swift */; };
-		4B11813D2B53A5A500B1C04D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11813C2B53A5A500B1C04D /* ViewController.swift */; };
 		4B1181422B53A5A700B1C04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1181412B53A5A700B1C04D /* Assets.xcassets */; };
 		4B1181452B53A5A700B1C04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1181432B53A5A700B1C04D /* LaunchScreen.storyboard */; };
 		4B1181542B53A83B00B1C04D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B1181532B53A83B00B1C04D /* SnapKit */; };
@@ -32,13 +31,16 @@
 		4B11818C2B53CF5800B1C04D /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1181832B53CF5800B1C04D /* Pretendard-ExtraBold.otf */; };
 		4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11818D2B53DA0100B1C04D /* UIFont+.swift */; };
 		4B8A4CB52B53DF4D007F7A3F /* boheom-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */; };
+		4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */; };
+		4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */; };
+		4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */; };
+		4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B1181352B53A5A500B1C04D /* Boheom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boheom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1181382B53A5A500B1C04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B11813A2B53A5A500B1C04D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4B11813C2B53A5A500B1C04D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4B1181412B53A5A700B1C04D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B1181442B53A5A700B1C04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B1181462B53A5A700B1C04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		4B1181832B53CF5800B1C04D /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		4B11818D2B53DA0100B1C04D /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boheom-logo.png"; sourceTree = "<group>"; };
+		4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomStep.swift; sourceTree = "<group>"; };
+		4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
+		4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 		4B11814D2B53A5D300B1C04D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4CB62B53E1C4007F7A3F /* Flow */,
 				4B8A4CB32B53DF2E007F7A3F /* Image */,
 				4B1181512B53A7AD00B1C04D /* Font */,
 				4B1181412B53A5A700B1C04D /* Assets.xcassets */,
@@ -141,7 +148,7 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4B11813C2B53A5A500B1C04D /* ViewController.swift */,
+				4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -169,6 +176,32 @@
 				4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		4B8A4CB62B53E1C4007F7A3F /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CBA2B541AD5007F7A3F /* Flows */,
+				4B8A4CB72B53E1C9007F7A3F /* Steps */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		4B8A4CB72B53E1C9007F7A3F /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		4B8A4CBA2B541AD5007F7A3F /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */,
+				4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */,
+			);
+			path = Flows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +303,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */,
-				4B11813D2B53A5A500B1C04D /* ViewController.swift in Sources */,
+				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
+				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
+				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
+				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

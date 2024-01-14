@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxFlow
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator = FlowCoordinator()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,9 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
 
-        window?.makeKeyAndVisible()
+        guard let window else { return }
+        let appFlow = AppFlow(rootPresentable: window)
+        self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: BoheomStep.onBoardingIsRequired))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
