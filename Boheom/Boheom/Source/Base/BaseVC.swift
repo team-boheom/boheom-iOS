@@ -30,6 +30,10 @@ open class BaseVC<T: ViewModelType>: UIViewController {
         layout()
     }
 
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     public func attribute() {}
     public func addView() {}
     public func layout() {}
