@@ -38,6 +38,15 @@
 		4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC22B542253007F7A3F /* ViewModelType.swift */; };
 		4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC42B5422F4007F7A3F /* BaseVC.swift */; };
 		4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */; };
+		4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CCC2B54292C007F7A3F /* UILabel+boheomLabel.swift */; };
+		4B8A4CCF2B542A11007F7A3F /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CCE2B542A11007F7A3F /* UIView+addSubviews.swift */; };
+		4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CD12B542DC0007F7A3F /* BoheomButton.swift */; };
+		4B8A4CD72B54F7E4007F7A3F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CD62B54F7E4007F7A3F /* SignupViewController.swift */; };
+		4B8A4CD92B54F808007F7A3F /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CD82B54F808007F7A3F /* SignupViewModel.swift */; };
+		4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CDA2B54F850007F7A3F /* LoginViewController.swift */; };
+		4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CDC2B54F861007F7A3F /* LoginViewModel.swift */; };
+		4B8A4CE02B54FBCB007F7A3F /* LoginDynamicHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CDF2B54FBCB007F7A3F /* LoginDynamicHeader.swift */; };
+		4B8A4CE22B550031007F7A3F /* BoheomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CE12B550031007F7A3F /* BoheomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +74,15 @@
 		4B8A4CC22B542253007F7A3F /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		4B8A4CC42B5422F4007F7A3F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		4B8A4CCC2B54292C007F7A3F /* UILabel+boheomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+boheomLabel.swift"; sourceTree = "<group>"; };
+		4B8A4CCE2B542A11007F7A3F /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
+		4B8A4CD12B542DC0007F7A3F /* BoheomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomButton.swift; sourceTree = "<group>"; };
+		4B8A4CD62B54F7E4007F7A3F /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4B8A4CD82B54F808007F7A3F /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		4B8A4CDA2B54F850007F7A3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4B8A4CDC2B54F861007F7A3F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4B8A4CDF2B54FBCB007F7A3F /* LoginDynamicHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDynamicHeader.swift; sourceTree = "<group>"; };
+		4B8A4CE12B550031007F7A3F /* BoheomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +164,8 @@
 		4B11814F2B53A61400B1C04D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4CD02B542CC7007F7A3F /* Component */,
+				4B8A4CCB2B5428D7007F7A3F /* Extention */,
 				4B8A4CC12B542241007F7A3F /* Base */,
 				4B1181502B53A71C00B1C04D /* Scene */,
 			);
@@ -155,7 +175,7 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4CC82B5425F3007F7A3F /* onBoarding */,
+				4B8A4CD32B54F7BC007F7A3F /* Auth */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -220,13 +240,68 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		4B8A4CC82B5425F3007F7A3F /* onBoarding */ = {
+		4B8A4CC82B5425F3007F7A3F /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
 				4B8A4CBD2B541C39007F7A3F /* OnBoardingViewController.swift */,
 				4B8A4CC92B542610007F7A3F /* OnBoardingViewModel.swift */,
 			);
-			path = onBoarding;
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		4B8A4CCB2B5428D7007F7A3F /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CCC2B54292C007F7A3F /* UILabel+boheomLabel.swift */,
+				4B8A4CCE2B542A11007F7A3F /* UIView+addSubviews.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		4B8A4CD02B542CC7007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CD12B542DC0007F7A3F /* BoheomButton.swift */,
+				4B8A4CE12B550031007F7A3F /* BoheomTextField.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4B8A4CD32B54F7BC007F7A3F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CD52B54F7CF007F7A3F /* Login */,
+				4B8A4CD42B54F7CA007F7A3F /* Signup */,
+				4B8A4CC82B5425F3007F7A3F /* OnBoarding */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4B8A4CD42B54F7CA007F7A3F /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CD62B54F7E4007F7A3F /* SignupViewController.swift */,
+				4B8A4CD82B54F808007F7A3F /* SignupViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		4B8A4CD52B54F7CF007F7A3F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CDE2B54FBB0007F7A3F /* Component */,
+				4B8A4CDA2B54F850007F7A3F /* LoginViewController.swift */,
+				4B8A4CDC2B54F861007F7A3F /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4B8A4CDE2B54FBB0007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CDF2B54FBCB007F7A3F /* LoginDynamicHeader.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,12 +406,21 @@
 				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
+				4B8A4CE22B550031007F7A3F /* BoheomTextField.swift in Sources */,
 				4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */,
+				4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */,
+				4B8A4CE02B54FBCB007F7A3F /* LoginDynamicHeader.swift in Sources */,
+				4B8A4CD92B54F808007F7A3F /* SignupViewModel.swift in Sources */,
 				4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
+				4B8A4CD72B54F7E4007F7A3F /* SignupViewController.swift in Sources */,
+				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
 				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
+				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,
 				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
+				4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */,
+				4B8A4CCF2B542A11007F7A3F /* UIView+addSubviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
