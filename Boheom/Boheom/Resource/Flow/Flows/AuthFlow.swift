@@ -7,7 +7,11 @@ class AuthFlow: Flow {
         return rootPresentable
     }
 
-    private let rootPresentable = UINavigationController()
+    private let rootPresentable = {
+        let navigationVC = UINavigationController()
+        navigationVC.navigationBar.isHidden = true
+        return navigationVC
+    }()
 
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? BoheomStep else { return .none }
@@ -15,7 +19,9 @@ class AuthFlow: Flow {
         case .onBoardingIsRequired:
             return navigateToOnBoardingScreen()
         case .loginIsRequired:
-            return .none
+            return navigateToLoginScreen()
+        case .signupIsRequired:
+            return navigateToSignupScreen()
         default:
             return .none
         }
@@ -31,4 +37,27 @@ class AuthFlow: Flow {
             withNextStepper: viewModel
         ))
     }
+
+    private func navigateToSignupScreen() -> FlowContributors {
+        let viewModel = SignupViewModel()
+        let signupVC = SignupViewController(viewModel: viewModel)
+
+        self.rootPresentable.pushViewController(signupVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: signupVC,
+            withNextStepper: viewModel
+        ))
+    }
+
+    private func navigateToLoginScreen() -> FlowContributors {
+        let viewModel = LoginViewModel()
+        let loginVC = LoginViewController(viewModel: viewModel)
+
+        self.rootPresentable.pushViewController(loginVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: loginVC,
+            withNextStepper: viewModel
+        ))
+    }
+
 }
