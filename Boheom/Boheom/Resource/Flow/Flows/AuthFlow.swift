@@ -39,13 +39,15 @@ class AuthFlow: Flow {
     }
 
     private func navigateToSignupScreen() -> FlowContributors {
-        let viewModel = SignupViewModel()
-        let signupVC = SignupViewController(viewModel: viewModel)
+        let signupFlow = SignupFlow()
 
-        self.rootPresentable.pushViewController(signupVC, animated: true)
+        Flows.use(signupFlow, when: .created) { flowRoot in
+            self.rootPresentable.pushViewController(flowRoot, animated: true)
+        }
+
         return .one(flowContributor: .contribute(
-            withNextPresentable: signupVC,
-            withNextStepper: viewModel
+            withNextPresentable: signupFlow,
+            withNextStepper: OneStepper(withSingleStep: BoheomStep.signupIsRequired)
         ))
     }
 
