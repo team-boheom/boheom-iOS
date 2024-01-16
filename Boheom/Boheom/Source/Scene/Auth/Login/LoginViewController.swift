@@ -19,6 +19,15 @@ class LoginViewController: BaseVC<LoginViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
+        navigationItem.hidesBackButton = true
+    }
+
+    override func bind() {
+        let input = LoginViewModel.Input(
+            signupSignal: signupButton.rx.tap.asObservable(),
+            loginSignal: loginButton.rx.tap.asObservable()
+        )
+        let _ = viewModel.transform(input: input)
     }
 
     override func addView() {
@@ -35,7 +44,7 @@ class LoginViewController: BaseVC<LoginViewModel> {
     override func layout() {
         headerLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(82)
-            $0.leading.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(23)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalTo(headerLabel.snp.bottom).offset(100)
