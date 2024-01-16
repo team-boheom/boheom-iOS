@@ -10,7 +10,13 @@ public enum BoheomStep: Step {
 
     // signup
     case signupIsRequired
+    case signupID
+    case signupPassword
+    case signupComplete
 
     //home
     case homeIsRequired
+
+    //navigate
+    case navigateBackRequired
 }
