@@ -8,10 +8,10 @@ class SignupFlow: Flow {
     }
 
     private let rootPresentable: SignupNicknameViewController
-    private let viewModel = SignupViewModel()
+    private let container = AppDelegate.container
 
     init() {
-        self.rootPresentable = SignupNicknameViewController(viewModel: viewModel)
+        self.rootPresentable = container.resolve(SignupNicknameViewController.self)!
     }
 
     func navigate(to step: Step) -> FlowContributors {
@@ -43,7 +43,7 @@ class SignupFlow: Flow {
     }
 
     private func navigateToSignupID() -> FlowContributors {
-        let targetView = SignupIDViewController(viewModel: viewModel)
+        let targetView = container.resolve(SignupIDViewController.self)!
 
         rootPresentable.navigationController?.pushViewController(targetView, animated: true)
         return .one(flowContributor: .contribute(
@@ -53,7 +53,7 @@ class SignupFlow: Flow {
     }
 
     private func navigateToSignupPassword() -> FlowContributors {
-        let targetView = SignupPasswordViewController(viewModel: viewModel)
+        let targetView = container.resolve(SignupPasswordViewController.self)!
 
         rootPresentable.navigationController?.pushViewController(targetView, animated: true)
         return .one(flowContributor: .contribute(
@@ -63,7 +63,7 @@ class SignupFlow: Flow {
     }
 
     private func navigateToSignupComplete() -> FlowContributors {
-        let targetView = SignupCompleteViewController(viewModel: viewModel)
+        let targetView = container.resolve(SignupCompleteViewController.self)!
 
         rootPresentable.navigationController?.pushViewController(targetView, animated: true)
         return .one(flowContributor: .contribute(

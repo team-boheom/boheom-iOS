@@ -8,6 +8,12 @@ class SignupViewModel: ViewModelType, Stepper {
     var steps: PublishRelay<Step> = .init()
     var disposeBag: DisposeBag = .init()
 
+    private let authService: AuthService
+
+    init(authService: AuthService) {
+        self.authService = authService
+    }
+
     struct Input {
         let nickNextSignal: Observable<Void>?
         let IdNextSignal: Observable<Void>?

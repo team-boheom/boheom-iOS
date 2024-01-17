@@ -13,6 +13,8 @@ class AuthFlow: Flow {
         return navigationVC
     }()
 
+    private let container = AppDelegate.container
+
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? BoheomStep else { return .none }
         switch step {
@@ -52,13 +54,12 @@ class AuthFlow: Flow {
     }
 
     private func navigateToLoginScreen() -> FlowContributors {
-        let viewModel = LoginViewModel()
-        let loginVC = LoginViewController(viewModel: viewModel)
+        let loginVC = container.resolve(LoginViewController.self)!
 
         self.rootPresentable.pushViewController(loginVC, animated: true)
         return .one(flowContributor: .contribute(
             withNextPresentable: loginVC,
-            withNextStepper: viewModel
+            withNextStepper: loginVC.viewModel
         ))
     }
 

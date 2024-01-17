@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    static var container: Container {
+       let injectContainer = Container()
+        injectContainer.registerAppDependencies()
+        return injectContainer
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
