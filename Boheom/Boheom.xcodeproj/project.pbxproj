@@ -52,6 +52,21 @@
 		4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CEB2B5672B9007F7A3F /* SignupPasswordViewController.swift */; };
 		4B8A4CEE2B5672E9007F7A3F /* SignupCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CED2B5672E9007F7A3F /* SignupCompleteViewController.swift */; };
 		4B8A4CF02B567600007F7A3F /* SignupFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CEF2B567600007F7A3F /* SignupFlow.swift */; };
+		4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CF62B56D029007F7A3F /* AuthAPI.swift */; };
+		4B8A4CFA2B56D19E007F7A3F /* BoheomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CF92B56D19E007F7A3F /* BoheomAPI.swift */; };
+		4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CFC2B56D6A5007F7A3F /* JWTTokenType.swift */; };
+		4B8A4CFF2B56D921007F7A3F /* JWTPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CFE2B56D921007F7A3F /* JWTPlugin.swift */; };
+		4B8A4D022B56E5A0007F7A3F /* BoheomConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A4D012B56E540007F7A3F /* BoheomConfig.xcconfig */; };
+		4B8A4D052B56E6C1007F7A3F /* BoheomBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D042B56E6C1007F7A3F /* BoheomBundle.swift */; };
+		4B8A4D072B56EA95007F7A3F /* JWTTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D062B56EA95007F7A3F /* JWTTokenStorage.swift */; };
+		4B8A4D0A2B56ED2C007F7A3F /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */; };
+		4B8A4D0C2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D0B2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift */; };
+		4B8A4D152B579C39007F7A3F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D142B579C39007F7A3F /* AuthService.swift */; };
+		4B8A4D182B579D41007F7A3F /* LoginTokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D172B579D41007F7A3F /* LoginTokenEntity.swift */; };
+		4B8A4D1A2B579DD2007F7A3F /* LoginTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D192B579DD2007F7A3F /* LoginTokenResponse.swift */; };
+		4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D1D2B579E9D007F7A3F /* LoginUserInfoRequest.swift */; };
+		4B8A4D202B57B2D8007F7A3F /* RestApiRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D1F2B57B2D8007F7A3F /* RestApiRemoteService.swift */; };
+		4B8A4D232B57B8FF007F7A3F /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D222B57B8FF007F7A3F /* AuthServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +108,20 @@
 		4B8A4CEB2B5672B9007F7A3F /* SignupPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordViewController.swift; sourceTree = "<group>"; };
 		4B8A4CED2B5672E9007F7A3F /* SignupCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupCompleteViewController.swift; sourceTree = "<group>"; };
 		4B8A4CEF2B567600007F7A3F /* SignupFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFlow.swift; sourceTree = "<group>"; };
+		4B8A4CF62B56D029007F7A3F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		4B8A4CF92B56D19E007F7A3F /* BoheomAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomAPI.swift; sourceTree = "<group>"; };
+		4B8A4CFC2B56D6A5007F7A3F /* JWTTokenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTokenType.swift; sourceTree = "<group>"; };
+		4B8A4CFE2B56D921007F7A3F /* JWTPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTPlugin.swift; sourceTree = "<group>"; };
+		4B8A4D012B56E540007F7A3F /* BoheomConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BoheomConfig.xcconfig; sourceTree = "<group>"; };
+		4B8A4D042B56E6C1007F7A3F /* BoheomBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomBundle.swift; sourceTree = "<group>"; };
+		4B8A4D062B56EA95007F7A3F /* JWTTokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTokenStorage.swift; sourceTree = "<group>"; };
+		4B8A4D0B2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		4B8A4D142B579C39007F7A3F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4B8A4D172B579D41007F7A3F /* LoginTokenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTokenEntity.swift; sourceTree = "<group>"; };
+		4B8A4D192B579DD2007F7A3F /* LoginTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTokenResponse.swift; sourceTree = "<group>"; };
+		4B8A4D1D2B579E9D007F7A3F /* LoginUserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserInfoRequest.swift; sourceTree = "<group>"; };
+		4B8A4D1F2B57B2D8007F7A3F /* RestApiRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiRemoteService.swift; sourceTree = "<group>"; };
+		4B8A4D222B57B8FF007F7A3F /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +131,7 @@
 			files = (
 				4B1181542B53A83B00B1C04D /* SnapKit in Frameworks */,
 				4B1181592B53A85900B1C04D /* Then in Frameworks */,
+				4B8A4D0A2B56ED2C007F7A3F /* SwiftKeychainWrapper in Frameworks */,
 				4B1181692B53A87F00B1C04D /* RxCocoa in Frameworks */,
 				4B11815E2B53A87100B1C04D /* Moya in Frameworks */,
 				4B1181622B53A87100B1C04D /* RxMoya in Frameworks */,
@@ -134,6 +164,7 @@
 		4B1181372B53A5A500B1C04D /* Boheom */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4CF12B56CFA8007F7A3F /* Service */,
 				4B11814E2B53A5DD00B1C04D /* SuportFile */,
 				4B11814C2B53A5C300B1C04D /* Application */,
 				4B11814D2B53A5D300B1C04D /* Resource */,
@@ -167,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				4B1181462B53A5A700B1C04D /* Info.plist */,
+				4B8A4D012B56E540007F7A3F /* BoheomConfig.xcconfig */,
 			);
 			path = SuportFile;
 			sourceTree = "<group>";
@@ -327,6 +359,130 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		4B8A4CF12B56CFA8007F7A3F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D002B56D9FF007F7A3F /* Util */,
+				4B8A4CF42B56CFEC007F7A3F /* AuthService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4B8A4CF22B56CFD1007F7A3F /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D0B2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		4B8A4CF42B56CFEC007F7A3F /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CF52B56CFF5007F7A3F /* API */,
+				4B8A4D1B2B579E41007F7A3F /* Domain */,
+				4B8A4D112B579BFC007F7A3F /* Data */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		4B8A4CF52B56CFF5007F7A3F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CF62B56D029007F7A3F /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4B8A4CF82B56D190007F7A3F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CF92B56D19E007F7A3F /* BoheomAPI.swift */,
+				4B8A4D1F2B57B2D8007F7A3F /* RestApiRemoteService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4B8A4CFB2B56D68D007F7A3F /* JWT */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D062B56EA95007F7A3F /* JWTTokenStorage.swift */,
+				4B8A4CFC2B56D6A5007F7A3F /* JWTTokenType.swift */,
+				4B8A4CFE2B56D921007F7A3F /* JWTPlugin.swift */,
+			);
+			path = JWT;
+			sourceTree = "<group>";
+		};
+		4B8A4D002B56D9FF007F7A3F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4CF22B56CFD1007F7A3F /* Logger */,
+				4B8A4CF82B56D190007F7A3F /* API */,
+				4B8A4D032B56E698007F7A3F /* Bundle */,
+				4B8A4CFB2B56D68D007F7A3F /* JWT */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4B8A4D032B56E698007F7A3F /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D042B56E6C1007F7A3F /* BoheomBundle.swift */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
+		4B8A4D112B579BFC007F7A3F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D1C2B579E85007F7A3F /* Request */,
+				4B8A4D122B579C14007F7A3F /* Response */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4B8A4D122B579C14007F7A3F /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D192B579DD2007F7A3F /* LoginTokenResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		4B8A4D162B579D15007F7A3F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D172B579D41007F7A3F /* LoginTokenEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4B8A4D1B2B579E41007F7A3F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D142B579C39007F7A3F /* AuthService.swift */,
+				4B8A4D212B57B8E2007F7A3F /* Error */,
+				4B8A4D162B579D15007F7A3F /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4B8A4D1C2B579E85007F7A3F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D1D2B579E9D007F7A3F /* LoginUserInfoRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		4B8A4D212B57B8E2007F7A3F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D222B57B8FF007F7A3F /* AuthServiceError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,6 +509,7 @@
 				4B11816C2B53A87F00B1C04D /* RxRelay */,
 				4B1181702B53A87F00B1C04D /* RxSwift */,
 				4B1181792B53A8A400B1C04D /* RxFlow */,
+				4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */,
 			);
 			productName = Boheom;
 			productReference = 4B1181352B53A5A500B1C04D /* Boheom.app */;
@@ -388,6 +545,7 @@
 				4B11815A2B53A87100B1C04D /* XCRemoteSwiftPackageReference "Moya" */,
 				4B1181632B53A87F00B1C04D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4B1181782B53A8A400B1C04D /* XCRemoteSwiftPackageReference "RxFlow" */,
+				4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 4B1181362B53A5A500B1C04D /* Products */;
 			projectDirPath = "";
@@ -408,6 +566,7 @@
 				4B1181892B53CF5800B1C04D /* Pretendard-Light.otf in Resources */,
 				4B1181862B53CF5800B1C04D /* Pretendard-Bold.otf in Resources */,
 				4B1181842B53CF5800B1C04D /* Pretendard-Black.otf in Resources */,
+				4B8A4D022B56E5A0007F7A3F /* BoheomConfig.xcconfig in Resources */,
 				4B1181852B53CF5800B1C04D /* Pretendard-ExtraLight.otf in Resources */,
 				4B8A4CB52B53DF4D007F7A3F /* boheom-logo.png in Resources */,
 				4B11818C2B53CF5800B1C04D /* Pretendard-ExtraBold.otf in Resources */,
@@ -426,28 +585,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */,
+				4B8A4D072B56EA95007F7A3F /* JWTTokenStorage.swift in Sources */,
+				4B8A4D1A2B579DD2007F7A3F /* LoginTokenResponse.swift in Sources */,
 				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
+				4B8A4D152B579C39007F7A3F /* AuthService.swift in Sources */,
 				4B8A4CEA2B5672AC007F7A3F /* SignupIDViewController.swift in Sources */,
 				4B8A4CE22B550031007F7A3F /* BoheomTextField.swift in Sources */,
 				4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */,
+				4B8A4D182B579D41007F7A3F /* LoginTokenEntity.swift in Sources */,
 				4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */,
 				4B8A4CE02B54FBCB007F7A3F /* LoginDynamicHeader.swift in Sources */,
 				4B8A4CD92B54F808007F7A3F /* SignupViewModel.swift in Sources */,
+				4B8A4D0C2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift in Sources */,
 				4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */,
+				4B8A4D232B57B8FF007F7A3F /* AuthServiceError.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
 				4B8A4CD72B54F7E4007F7A3F /* SignupNicknameViewController.swift in Sources */,
 				4B8A4CEE2B5672E9007F7A3F /* SignupCompleteViewController.swift in Sources */,
 				4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */,
 				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
+				4B8A4D052B56E6C1007F7A3F /* BoheomBundle.swift in Sources */,
+				4B8A4D202B57B2D8007F7A3F /* RestApiRemoteService.swift in Sources */,
+				4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */,
+				4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */,
+				4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */,
 				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
+				4B8A4CFA2B56D19E007F7A3F /* BoheomAPI.swift in Sources */,
 				4B8A4CF02B567600007F7A3F /* SignupFlow.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
 				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,
 				4B8A4CE82B564E77007F7A3F /* SubContentHeader.swift in Sources */,
 				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
 				4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */,
+				4B8A4CFF2B56D921007F7A3F /* JWTPlugin.swift in Sources */,
 				4B8A4CCF2B542A11007F7A3F /* UIView+addSubviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +759,7 @@
 		};
 		4B11814A2B53A5A700B1C04D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B8A4D012B56E540007F7A3F /* BoheomConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -615,6 +788,7 @@
 		};
 		4B11814B2B53A5A700B1C04D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B8A4D012B56E540007F7A3F /* BoheomConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -705,6 +879,14 @@
 				minimumVersion = 2.13.0;
 			};
 		};
+		4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -752,6 +934,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B1181782B53A8A400B1C04D /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
