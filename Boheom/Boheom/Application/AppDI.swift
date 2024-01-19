@@ -21,6 +21,9 @@ public extension Container {
             SignupViewModel(authService: resolver.resolve(AuthService.self)!)
         }
         self.register(OnBoardingViewModel.self) { _ in OnBoardingViewModel() }
+        // TODO: service 만들어서 주입해야 함
+        self.register(HomeViewModel.self) { _ in HomeViewModel() }
+        self.register(ProfileViewModel.self) { _ in ProfileViewModel() }
     }
 
     private func registerViewControllerDependencies() {
@@ -41,6 +44,12 @@ public extension Container {
         }
         self.register(SignupCompleteViewController.self) { resolver in
             SignupCompleteViewController(viewModel: resolver.resolve(SignupViewModel.self)!)
+        }
+        self.register(HomeViewController.self) { resolver in
+            HomeViewController(viewModel: resolver.resolve(HomeViewModel.self)!)
+        }
+        self.register(ProfileViewController.self) { resolver in
+            ProfileViewController(viewModel: resolver.resolve(ProfileViewModel.self)!)
         }
     }
 }
