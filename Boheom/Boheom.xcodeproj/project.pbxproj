@@ -69,6 +69,21 @@
 		4B8A4D232B57B8FF007F7A3F /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D222B57B8FF007F7A3F /* AuthServiceError.swift */; };
 		4B8A4D262B5824C8007F7A3F /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 4B8A4D252B5824C8007F7A3F /* Swinject */; };
 		4B8A4D2A2B582549007F7A3F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D292B582549007F7A3F /* AppDI.swift */; };
+		4B8A4D2D2B58D937007F7A3F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D2C2B58D937007F7A3F /* HomeViewController.swift */; };
+		4B8A4D2F2B58D95B007F7A3F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D2E2B58D95B007F7A3F /* HomeViewModel.swift */; };
+		4B8A4D322B58D9D8007F7A3F /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D312B58D9D8007F7A3F /* HomeHeaderView.swift */; };
+		4B8A4D342B58DEE4007F7A3F /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D332B58DEE4007F7A3F /* HomeFlow.swift */; };
+		4B8A4D362B58E56F007F7A3F /* BoheomListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */; };
+		4B8A4D382B58FABA007F7A3F /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D372B58FABA007F7A3F /* PostCollectionViewCell.swift */; };
+		4B8A4D3A2B58FF82007F7A3F /* UIView+setShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D392B58FF82007F7A3F /* UIView+setShadow.swift */; };
+		4B8A4D3C2B59166F007F7A3F /* HomeFooterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D3B2B59166F007F7A3F /* HomeFooterButton.swift */; };
+		4B8A4D402B591C9F007F7A3F /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D3F2B591C9F007F7A3F /* IconLabel.swift */; };
+		4B8A4D432B5A3E80007F7A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D422B5A3E80007F7A3F /* ProfileViewController.swift */; };
+		4B8A4D452B5A3E91007F7A3F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D442B5A3E91007F7A3F /* ProfileViewModel.swift */; };
+		4B8A4D482B5A404B007F7A3F /* ProfileBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */; };
+		4B8A4D4A2B5A4237007F7A3F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */; };
+		4B8A4D4D2B5A448D007F7A3F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B8A4D4C2B5A448D007F7A3F /* Kingfisher */; };
+		4B8A4D4F2B5A525C007F7A3F /* BoheomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +140,20 @@
 		4B8A4D1F2B57B2D8007F7A3F /* RestApiRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiRemoteService.swift; sourceTree = "<group>"; };
 		4B8A4D222B57B8FF007F7A3F /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
 		4B8A4D292B582549007F7A3F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		4B8A4D2C2B58D937007F7A3F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4B8A4D2E2B58D95B007F7A3F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4B8A4D312B58D9D8007F7A3F /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		4B8A4D332B58DEE4007F7A3F /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomListHeader.swift; sourceTree = "<group>"; };
+		4B8A4D372B58FABA007F7A3F /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B8A4D392B58FF82007F7A3F /* UIView+setShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+setShadow.swift"; sourceTree = "<group>"; };
+		4B8A4D3B2B59166F007F7A3F /* HomeFooterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterButton.swift; sourceTree = "<group>"; };
+		4B8A4D3F2B591C9F007F7A3F /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
+		4B8A4D422B5A3E80007F7A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4B8A4D442B5A3E91007F7A3F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBackgroundView.swift; sourceTree = "<group>"; };
+		4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomBackButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8A4D4D2B5A448D007F7A3F /* Kingfisher in Frameworks */,
 				4B1181542B53A83B00B1C04D /* SnapKit in Frameworks */,
 				4B1181592B53A85900B1C04D /* Then in Frameworks */,
 				4B8A4D0A2B56ED2C007F7A3F /* SwiftKeychainWrapper in Frameworks */,
@@ -275,6 +305,7 @@
 				4B8A4CBF2B541E03007F7A3F /* AppFlow.swift */,
 				4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */,
 				4B8A4CEF2B567600007F7A3F /* SignupFlow.swift */,
+				4B8A4D332B58DEE4007F7A3F /* HomeFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -302,6 +333,7 @@
 			children = (
 				4B8A4CCC2B54292C007F7A3F /* UILabel+boheomLabel.swift */,
 				4B8A4CCE2B542A11007F7A3F /* UIView+addSubviews.swift */,
+				4B8A4D392B58FF82007F7A3F /* UIView+setShadow.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -309,8 +341,11 @@
 		4B8A4CD02B542CC7007F7A3F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4D3D2B591C6D007F7A3F /* Cell */,
 				4B8A4CD12B542DC0007F7A3F /* BoheomButton.swift */,
 				4B8A4CE12B550031007F7A3F /* BoheomTextField.swift */,
+				4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */,
+				4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -318,6 +353,8 @@
 		4B8A4CD32B54F7BC007F7A3F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4D412B5A3E47007F7A3F /* Profile */,
+				4B8A4D2B2B58D91E007F7A3F /* Home */,
 				4B8A4CD52B54F7CF007F7A3F /* Login */,
 				4B8A4CD42B54F7CA007F7A3F /* Signup */,
 				4B8A4CC82B5425F3007F7A3F /* OnBoarding */,
@@ -488,6 +525,61 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		4B8A4D2B2B58D91E007F7A3F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D302B58D9CE007F7A3F /* Component */,
+				4B8A4D2C2B58D937007F7A3F /* HomeViewController.swift */,
+				4B8A4D2E2B58D95B007F7A3F /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4B8A4D302B58D9CE007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D312B58D9D8007F7A3F /* HomeHeaderView.swift */,
+				4B8A4D3B2B59166F007F7A3F /* HomeFooterButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4B8A4D3D2B591C6D007F7A3F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D3E2B591C72007F7A3F /* Component */,
+				4B8A4D372B58FABA007F7A3F /* PostCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4B8A4D3E2B591C72007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D3F2B591C9F007F7A3F /* IconLabel.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4B8A4D412B5A3E47007F7A3F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D462B5A4035007F7A3F /* Component */,
+				4B8A4D422B5A3E80007F7A3F /* ProfileViewController.swift */,
+				4B8A4D442B5A3E91007F7A3F /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		4B8A4D462B5A4035007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */,
+				4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,6 +608,7 @@
 				4B1181792B53A8A400B1C04D /* RxFlow */,
 				4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */,
 				4B8A4D252B5824C8007F7A3F /* Swinject */,
+				4B8A4D4C2B5A448D007F7A3F /* Kingfisher */,
 			);
 			productName = Boheom;
 			productReference = 4B1181352B53A5A500B1C04D /* Boheom.app */;
@@ -553,6 +646,7 @@
 				4B1181782B53A8A400B1C04D /* XCRemoteSwiftPackageReference "RxFlow" */,
 				4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				4B8A4D242B5824C8007F7A3F /* XCRemoteSwiftPackageReference "Swinject" */,
+				4B8A4D4B2B5A448D007F7A3F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4B1181362B53A5A500B1C04D /* Products */;
 			projectDirPath = "";
@@ -594,22 +688,31 @@
 				4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */,
 				4B8A4D072B56EA95007F7A3F /* JWTTokenStorage.swift in Sources */,
 				4B8A4D1A2B579DD2007F7A3F /* LoginTokenResponse.swift in Sources */,
+				4B8A4D2F2B58D95B007F7A3F /* HomeViewModel.swift in Sources */,
+				4B8A4D4A2B5A4237007F7A3F /* ProfileHeaderView.swift in Sources */,
 				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
+				4B8A4D432B5A3E80007F7A3F /* ProfileViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
 				4B8A4D152B579C39007F7A3F /* AuthService.swift in Sources */,
+				4B8A4D382B58FABA007F7A3F /* PostCollectionViewCell.swift in Sources */,
 				4B8A4CEA2B5672AC007F7A3F /* SignupIDViewController.swift in Sources */,
 				4B8A4CE22B550031007F7A3F /* BoheomTextField.swift in Sources */,
 				4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */,
 				4B8A4D182B579D41007F7A3F /* LoginTokenEntity.swift in Sources */,
+				4B8A4D2D2B58D937007F7A3F /* HomeViewController.swift in Sources */,
 				4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */,
+				4B8A4D402B591C9F007F7A3F /* IconLabel.swift in Sources */,
 				4B8A4CE02B54FBCB007F7A3F /* LoginDynamicHeader.swift in Sources */,
 				4B8A4CD92B54F808007F7A3F /* SignupViewModel.swift in Sources */,
+				4B8A4D4F2B5A525C007F7A3F /* BoheomBackButton.swift in Sources */,
+				4B8A4D342B58DEE4007F7A3F /* HomeFlow.swift in Sources */,
 				4B8A4D0C2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift in Sources */,
 				4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */,
 				4B8A4D232B57B8FF007F7A3F /* AuthServiceError.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
 				4B8A4CD72B54F7E4007F7A3F /* SignupNicknameViewController.swift in Sources */,
+				4B8A4D362B58E56F007F7A3F /* BoheomListHeader.swift in Sources */,
 				4B8A4CEE2B5672E9007F7A3F /* SignupCompleteViewController.swift in Sources */,
 				4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */,
 				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
@@ -618,15 +721,20 @@
 				4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */,
 				4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */,
 				4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */,
+				4B8A4D482B5A404B007F7A3F /* ProfileBackgroundView.swift in Sources */,
+				4B8A4D322B58D9D8007F7A3F /* HomeHeaderView.swift in Sources */,
 				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
 				4B8A4CFA2B56D19E007F7A3F /* BoheomAPI.swift in Sources */,
 				4B8A4CF02B567600007F7A3F /* SignupFlow.swift in Sources */,
 				4B8A4D2A2B582549007F7A3F /* AppDI.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
 				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,
+				4B8A4D452B5A3E91007F7A3F /* ProfileViewModel.swift in Sources */,
+				4B8A4D3C2B59166F007F7A3F /* HomeFooterButton.swift in Sources */,
 				4B8A4CE82B564E77007F7A3F /* SubContentHeader.swift in Sources */,
 				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
 				4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */,
+				4B8A4D3A2B58FF82007F7A3F /* UIView+setShadow.swift in Sources */,
 				4B8A4CFF2B56D921007F7A3F /* JWTPlugin.swift in Sources */,
 				4B8A4CCF2B542A11007F7A3F /* UIView+addSubviews.swift in Sources */,
 			);
@@ -903,6 +1011,14 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		4B8A4D4B2B5A448D007F7A3F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -960,6 +1076,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B8A4D242B5824C8007F7A3F /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		4B8A4D4C2B5A448D007F7A3F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B8A4D4B2B5A448D007F7A3F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
