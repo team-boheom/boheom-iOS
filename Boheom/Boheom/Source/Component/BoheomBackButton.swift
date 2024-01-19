@@ -21,7 +21,7 @@ public class BoheomBackButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         target?.popViewController(animated: true)
     }
 

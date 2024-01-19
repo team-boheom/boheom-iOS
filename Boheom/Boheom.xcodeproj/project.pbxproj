@@ -84,6 +84,11 @@
 		4B8A4D4A2B5A4237007F7A3F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */; };
 		4B8A4D4D2B5A448D007F7A3F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B8A4D4C2B5A448D007F7A3F /* Kingfisher */; };
 		4B8A4D4F2B5A525C007F7A3F /* BoheomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */; };
+		4B8A4D532B5A862D007F7A3F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D522B5A862D007F7A3F /* PostDetailViewController.swift */; };
+		4B8A4D552B5A8673007F7A3F /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D542B5A8673007F7A3F /* PostDetailViewModel.swift */; };
+		4B8A4D582B5A86BC007F7A3F /* PostWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D572B5A86BC007F7A3F /* PostWriteViewController.swift */; };
+		4B8A4D5A2B5A86C7007F7A3F /* PostWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D592B5A86C7007F7A3F /* PostWriteViewModel.swift */; };
+		4B8A4D5D2B5A8786007F7A3F /* PostDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +159,11 @@
 		4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBackgroundView.swift; sourceTree = "<group>"; };
 		4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomBackButton.swift; sourceTree = "<group>"; };
+		4B8A4D522B5A862D007F7A3F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		4B8A4D542B5A8673007F7A3F /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		4B8A4D572B5A86BC007F7A3F /* PostWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewController.swift; sourceTree = "<group>"; };
+		4B8A4D592B5A86C7007F7A3F /* PostWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewModel.swift; sourceTree = "<group>"; };
+		4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +262,7 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4D502B5A860B007F7A3F /* Post */,
 				4B8A4D412B5A3E47007F7A3F /* Profile */,
 				4B8A4D2B2B58D91E007F7A3F /* Home */,
 				4B8A4CD32B54F7BC007F7A3F /* Auth */,
@@ -344,7 +355,8 @@
 		4B8A4CD02B542CC7007F7A3F /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4D3D2B591C6D007F7A3F /* Cell */,
+				4B8A4D3F2B591C9F007F7A3F /* IconLabel.swift */,
+				4B8A4D372B58FABA007F7A3F /* PostCollectionViewCell.swift */,
 				4B8A4CD12B542DC0007F7A3F /* BoheomButton.swift */,
 				4B8A4CE12B550031007F7A3F /* BoheomTextField.swift */,
 				4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */,
@@ -544,23 +556,6 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		4B8A4D3D2B591C6D007F7A3F /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				4B8A4D3E2B591C72007F7A3F /* Component */,
-				4B8A4D372B58FABA007F7A3F /* PostCollectionViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		4B8A4D3E2B591C72007F7A3F /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				4B8A4D3F2B591C9F007F7A3F /* IconLabel.swift */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
 		4B8A4D412B5A3E47007F7A3F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +571,42 @@
 			children = (
 				4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */,
 				4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4B8A4D502B5A860B007F7A3F /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D512B5A8614007F7A3F /* PostDetail */,
+				4B8A4D562B5A8695007F7A3F /* PostWrite */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		4B8A4D512B5A8614007F7A3F /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D5B2B5A876F007F7A3F /* Component */,
+				4B8A4D522B5A862D007F7A3F /* PostDetailViewController.swift */,
+				4B8A4D542B5A8673007F7A3F /* PostDetailViewModel.swift */,
+			);
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		4B8A4D562B5A8695007F7A3F /* PostWrite */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D572B5A86BC007F7A3F /* PostWriteViewController.swift */,
+				4B8A4D592B5A86C7007F7A3F /* PostWriteViewModel.swift */,
+			);
+			path = PostWrite;
+			sourceTree = "<group>";
+		};
+		4B8A4D5B2B5A876F007F7A3F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -708,26 +739,31 @@
 				4B8A4D4F2B5A525C007F7A3F /* BoheomBackButton.swift in Sources */,
 				4B8A4D342B58DEE4007F7A3F /* HomeFlow.swift in Sources */,
 				4B8A4D0C2B56F1BB007F7A3F /* MoyaLoggingPlugin.swift in Sources */,
+				4B8A4D552B5A8673007F7A3F /* PostDetailViewModel.swift in Sources */,
 				4B8A4CC32B542253007F7A3F /* ViewModelType.swift in Sources */,
 				4B8A4D232B57B8FF007F7A3F /* AuthServiceError.swift in Sources */,
+				4B8A4D582B5A86BC007F7A3F /* PostWriteViewController.swift in Sources */,
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
 				4B8A4CD72B54F7E4007F7A3F /* SignupNicknameViewController.swift in Sources */,
 				4B8A4D362B58E56F007F7A3F /* BoheomListHeader.swift in Sources */,
 				4B8A4CEE2B5672E9007F7A3F /* SignupCompleteViewController.swift in Sources */,
 				4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */,
 				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
+				4B8A4D532B5A862D007F7A3F /* PostDetailViewController.swift in Sources */,
 				4B8A4D052B56E6C1007F7A3F /* BoheomBundle.swift in Sources */,
 				4B8A4D202B57B2D8007F7A3F /* RestApiRemoteService.swift in Sources */,
 				4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */,
 				4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */,
 				4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */,
 				4B8A4D482B5A404B007F7A3F /* ProfileBackgroundView.swift in Sources */,
+				4B8A4D5A2B5A86C7007F7A3F /* PostWriteViewModel.swift in Sources */,
 				4B8A4D322B58D9D8007F7A3F /* HomeHeaderView.swift in Sources */,
 				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
 				4B8A4CFA2B56D19E007F7A3F /* BoheomAPI.swift in Sources */,
 				4B8A4CF02B567600007F7A3F /* SignupFlow.swift in Sources */,
 				4B8A4D2A2B582549007F7A3F /* AppDI.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
+				4B8A4D5D2B5A8786007F7A3F /* PostDetailHeaderView.swift in Sources */,
 				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,
 				4B8A4D452B5A3E91007F7A3F /* ProfileViewModel.swift in Sources */,
 				4B8A4D3C2B59166F007F7A3F /* HomeFooterButton.swift in Sources */,

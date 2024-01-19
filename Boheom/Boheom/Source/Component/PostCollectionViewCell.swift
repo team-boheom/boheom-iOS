@@ -22,7 +22,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     private let viewerCountLabel = IconLabel(iconImage: .eyeViewer).then {
         $0.content = "23"
     }
-    private let joinCountLabel = IconLabel(iconImage: .person).then {
+    private let playerCountLabel = IconLabel(iconImage: .person).then {
         $0.content = "1/4"
     }
 
@@ -35,13 +35,7 @@ class PostCollectionViewCell: UICollectionViewCell {
         $0.font = .headerH1SemiBold
     }
 
-    private let applyButton = UIButton(type: .system).then {
-        $0.setTitle("신청", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .green500Main
-        $0.titleLabel?.font = .bodyB3Bold
-        $0.layer.cornerRadius = 4
-    }
+    private let applyButton = BoheomButton(text: "신청", font: .bodyB3Bold, type: .fill, cornerRadius: 4)
 
     public func setup(
         category: String,
@@ -67,7 +61,7 @@ class PostCollectionViewCell: UICollectionViewCell {
             titleLabel,
             contentLabel,
             viewerCountLabel,
-            joinCountLabel,
+            playerCountLabel,
             applyButton,
             rankBackView,
             rankLabel
@@ -91,7 +85,7 @@ class PostCollectionViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview().inset(19)
         }
-        joinCountLabel.snp.makeConstraints {
+        playerCountLabel.snp.makeConstraints {
             $0.leading.equalTo(viewerCountLabel.snp.trailing).offset(12)
             $0.bottom.equalTo(viewerCountLabel)
         }

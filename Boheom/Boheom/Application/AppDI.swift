@@ -24,6 +24,8 @@ public extension Container {
         // TODO: service 만들어서 주입해야 함
         self.register(HomeViewModel.self) { _ in HomeViewModel() }
         self.register(ProfileViewModel.self) { _ in ProfileViewModel() }
+        self.register(PostDetailViewModel.self) { _ in PostDetailViewModel() }
+        self.register(PostWriteViewModel.self) { _ in PostWriteViewModel() }
     }
 
     private func registerViewControllerDependencies() {
@@ -50,6 +52,12 @@ public extension Container {
         }
         self.register(ProfileViewController.self) { resolver in
             ProfileViewController(viewModel: resolver.resolve(ProfileViewModel.self)!)
+        }
+        self.register(PostDetailViewController.self) { resolver in
+            PostDetailViewController(viewModel: resolver.resolve(PostDetailViewModel.self)!)
+        }
+        self.register(PostWriteViewController.self) { resolver in
+            PostWriteViewController(viewModel: resolver.resolve(PostWriteViewModel.self)!)
         }
     }
 }

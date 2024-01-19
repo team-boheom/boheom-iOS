@@ -22,6 +22,8 @@ class HomeFlow: Flow {
             return navigateToHomeScreen()
         case .profileIsRequired:
             return navigateToProfileScreen()
+        case .postDetailIsRequired:
+            return navigateToPostDetailScreen()
         default:
             return .none
         }
@@ -44,6 +46,16 @@ class HomeFlow: Flow {
         return .one(flowContributor: .contribute(
             withNextPresentable: profileVC,
             withNextStepper: profileVC.viewModel
+        ))
+    }
+
+    private func navigateToPostDetailScreen() -> FlowContributors {
+        let postDetailVC = container.resolve(PostDetailViewController.self)!
+
+        self.rootPresentable.pushViewController(postDetailVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: postDetailVC,
+            withNextStepper: postDetailVC.viewModel
         ))
     }
 }

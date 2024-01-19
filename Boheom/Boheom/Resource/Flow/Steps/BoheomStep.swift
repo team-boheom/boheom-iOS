@@ -20,6 +20,9 @@ public enum BoheomStep: Step {
     //profile
     case profileIsRequired
 
+    //post
+    case postDetailIsRequired
+
     //navigate
     case navigateBackRequired
 }

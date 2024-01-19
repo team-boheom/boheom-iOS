@@ -21,7 +21,8 @@ public class BoheomButton: UIButton {
         font: UIFont? = .bodyB1Medium,
         textColor: UIColor? = .white,
         pointColor: UIColor? = .green500Main,
-        type: BoheomButtonType
+        type: BoheomButtonType,
+        cornerRadius: CGFloat = 8
     ) {
         super.init(frame: .zero)
         switch type {
@@ -40,7 +41,7 @@ public class BoheomButton: UIButton {
 
         setTitle(text, for: .normal)
         titleLabel?.font = font
-        layer.cornerRadius = 8
+        layer.cornerRadius = cornerRadius
 
         self.type = type
         self.pointColor = pointColor
