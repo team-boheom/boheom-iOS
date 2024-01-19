@@ -1,12 +1,12 @@
 import UIKit
 
-enum BoheomButtonType {
+public enum BoheomButtonType {
     case fill
     case outline
     case text
 }
 
-class BoheomButton: UIButton {
+public class BoheomButton: UIButton {
 
     public var isDisable: Bool = false {
         didSet { isDisable ? disableButton() : activateButton() }
@@ -51,7 +51,7 @@ class BoheomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override var isHighlighted: Bool {
+    public override var isHighlighted: Bool {
         didSet { layer.opacity = isHighlighted ? 0.7 : 1 }
     }
 }

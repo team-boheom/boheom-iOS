@@ -4,7 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class BoheomTextField: UIView {
+public class BoheomTextField: UIView {
 
     private let disposeBag: DisposeBag = .init()
 
@@ -62,7 +62,7 @@ class BoheomTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         addView()
         layout()
     }
