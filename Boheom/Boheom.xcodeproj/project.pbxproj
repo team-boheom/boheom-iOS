@@ -252,7 +252,10 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4D412B5A3E47007F7A3F /* Profile */,
+				4B8A4D2B2B58D91E007F7A3F /* Home */,
 				4B8A4CD32B54F7BC007F7A3F /* Auth */,
+				4B8A4CC82B5425F3007F7A3F /* OnBoarding */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -353,11 +356,8 @@
 		4B8A4CD32B54F7BC007F7A3F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4D412B5A3E47007F7A3F /* Profile */,
-				4B8A4D2B2B58D91E007F7A3F /* Home */,
 				4B8A4CD52B54F7CF007F7A3F /* Login */,
 				4B8A4CD42B54F7CA007F7A3F /* Signup */,
-				4B8A4CC82B5425F3007F7A3F /* OnBoarding */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
