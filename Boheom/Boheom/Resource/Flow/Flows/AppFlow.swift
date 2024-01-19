@@ -18,7 +18,7 @@ class AppFlow: Flow {
         case .onBoardingIsRequired:
             return navigateToOnBoardingScreen()
         case .homeIsRequired:
-            return .none
+            return navigateToHomeScreen()
         default:
             return .none
         }
@@ -37,11 +37,14 @@ class AppFlow: Flow {
     }
 
     private func navigateToHomeScreen() -> FlowContributors {
-        let authFlow = AuthFlow()
-        Flows.use(authFlow, when: .created) { root in
+        let homeFlow = HomeFlow()
+        Flows.use(homeFlow, when: .created) { root in
             self.rootPresentable.rootViewController = root
             self.rootPresentable.makeKeyAndVisible()
         }
-        return .none
+        return .one(flowContributor: .contribute(
+            withNextPresentable: homeFlow,
+            withNextStepper: OneStepper(withSingleStep: BoheomStep.homeIsRequired)
+        ))
     }
 }

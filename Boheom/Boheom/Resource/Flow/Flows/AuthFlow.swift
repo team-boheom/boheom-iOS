@@ -30,13 +30,12 @@ class AuthFlow: Flow {
     }
     
     private func navigateToOnBoardingScreen() -> FlowContributors {
-        let viewModel = OnBoardingViewModel()
-        let onBoardingVC = OnBoardingViewController(viewModel: viewModel)
+        let onBoardingVC = container.resolve(OnBoardingViewController.self)!
 
         self.rootPresentable.pushViewController(onBoardingVC, animated: false)
         return .one(flowContributor: .contribute(
             withNextPresentable: onBoardingVC,
-            withNextStepper: viewModel
+            withNextStepper: onBoardingVC.viewModel
         ))
     }
 
