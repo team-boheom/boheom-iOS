@@ -11,6 +11,8 @@ public extension Container {
 
     private func registerServiceDependencies() {
         self.register(AuthService.self) { _ in AuthService() }
+        self.register(UserService.self) { _ in UserService() }
+        self.register(FeedService.self) { _ in FeedService() }
     }
 
     private func registerViewModelDependencies() {
@@ -21,10 +23,22 @@ public extension Container {
             SignupViewModel(authService: resolver.resolve(AuthService.self)!)
         }
         self.register(OnBoardingViewModel.self) { _ in OnBoardingViewModel() }
+        self.register(HomeViewModel.self) { resolver in
+            HomeViewModel(
+                userService: resolver.resolve(UserService.self)!,
+                feedService: resolver.resolve(FeedService.self)!
+            )
+        }
+        self.register(ProfileViewModel.self) { resolver in
+            ProfileViewModel(
+                userService: resolver.resolve(UserService.self)!,
+                feedServide: resolver.resolve(FeedService.self)!
+            )
+        }
+        self.register(PostDetailViewModel.self) { resolver in
+            PostDetailViewModel(feedService: resolver.resolve(FeedService.self)!)
+        }
         // TODO: service 만들어서 주입해야 함
-        self.register(HomeViewModel.self) { _ in HomeViewModel() }
-        self.register(ProfileViewModel.self) { _ in ProfileViewModel() }
-        self.register(PostDetailViewModel.self) { _ in PostDetailViewModel() }
         self.register(PostWriteViewModel.self) { _ in PostWriteViewModel() }
     }
 

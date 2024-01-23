@@ -10,6 +10,7 @@ class SignupCompleteViewController: BaseVC<SignupViewModel> {
         subContentText: "이제 모험을 시작해볼까요?"
     )
 
+    private let meddleImageView = UIImageView(image: .partyPopper)
     private let nextButton = BoheomButton(text: "로그인 하러가기", type: .fill)
 
     override func attribute() {
@@ -23,19 +24,27 @@ class SignupCompleteViewController: BaseVC<SignupViewModel> {
             IdNextSignal: nil,
             passwordNextSignal: nil,
             completeNextSignal: nextButton.rx.tap.asObservable(),
-            navigateBackSignal: nil
+            navigateBackSignal: nil,
+            nickNameTextObservable: nil,
+            idTextObservable: nil,
+            passwordTextObservable: nil,
+            passwordCheckTextObservable: nil
         )
         let _ = viewModel.transform(input: input)
     }
 
     override func addView() {
-        view.addSubviews(headerView, nextButton)
+        view.addSubviews(headerView, meddleImageView, nextButton)
     }
 
     override func layout() {
         headerView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(80)
             $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        meddleImageView.snp.makeConstraints {
+            $0.width.height.equalTo(200)
+            $0.center.equalToSuperview()
         }
         nextButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)

@@ -21,8 +21,12 @@ public enum BoheomStep: Step {
     case profileIsRequired
 
     //post
-    case postDetailIsRequired
+    case postDetailIsRequired(postID: String)
+    case postWriteIsRequired
 
     //navigate
     case navigateBackRequired
+
+    //toast
+    case presentToastRequired
 }

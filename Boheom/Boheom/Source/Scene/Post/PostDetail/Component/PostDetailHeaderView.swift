@@ -10,6 +10,7 @@ class PostDetailHeaderView: UIView {
 
     private let titleLabel = UILabel().then {
         $0.boheomLabel(font: .headerH3SemiBold)
+        $0.numberOfLines = 0
     }
 
     private let nickNameLabel = UILabel().then {
@@ -30,6 +31,15 @@ class PostDetailHeaderView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func setup(with postData: PostDetailEntity) {
+        categoryLabel.text = toCategoryString(postData.tags)
+        titleLabel.text = postData.title
+        nickNameLabel.text = postData.username
+        dateLabel.text = "・ \(postData.createdAt)"
+        viewerCountLabel.content = "\(postData.view)"
+        playerCountLabel.content = "\(postData.applyCount)/\(postData.recruitment)"
     }
 
     override func layoutSubviews() {
@@ -81,19 +91,9 @@ class PostDetailHeaderView: UIView {
 }
 
 extension PostDetailHeaderView {
-    public func setup(
-        category: String,
-        title: String,
-        nickName: String,
-        date: String,
-        viewer: String,
-        player: String
-    ) {
-        categoryLabel.text = category
-        titleLabel.text = title
-        nickNameLabel.text = nickName
-        dateLabel.text = "・ \(date)"
-        viewerCountLabel.content = viewer
-        playerCountLabel.content = player
+    private func toCategoryString(_ arr: [String]) -> String {
+        guard var categoryString = arr.first else { return "" }
+        for i in 1..<arr.count { categoryString = categoryString + " \(arr[i])" }
+        return categoryString
     }
 }

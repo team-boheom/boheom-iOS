@@ -11,7 +11,7 @@ class SubContentHeader: UIView {
 
     public var contentText: String {
         set { subContentLabel.text = newValue }
-        get { return subContentLabel.text ?? ""}
+        get { return subContentLabel.text ?? "" }
     }
 
     private let headerLabel = UILabel().then {
@@ -26,6 +26,7 @@ class SubContentHeader: UIView {
         super.init(frame: .zero)
         headerLabel.text = headerText
         subContentLabel.text = subContentText
+        isUserInteractionEnabled = false
         addView()
         layout()
     }

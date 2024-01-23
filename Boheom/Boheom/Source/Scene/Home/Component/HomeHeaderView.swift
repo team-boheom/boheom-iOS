@@ -19,7 +19,7 @@ class HomeHeaderView: UIView {
         let attrString = NSMutableAttributedString(string: "보드게임\n모험을 시작해볼까요?")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.2
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         $0.attributedText = attrString
     }
 

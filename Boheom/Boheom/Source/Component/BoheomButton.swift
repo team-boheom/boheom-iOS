@@ -53,7 +53,7 @@ public class BoheomButton: UIButton {
     }
 
     public override var isHighlighted: Bool {
-        didSet { layer.opacity = isHighlighted ? 0.7 : 1 }
+        didSet { highlightAnimation(isHighlighted) }
     }
 }
 
@@ -82,6 +82,13 @@ extension BoheomButton {
             setTitleColor(pointColor, for: .normal)
         case .text:
             setTitleColor(textColor, for: .normal)
+        }
+    }
+
+    private func highlightAnimation(_ status: Bool) {
+        UIView.animate(withDuration: 0.1, delay: 0) {
+            self.transform = status ? .init(scaleX: 0.98, y: 0.98) : .identity
+            self.layer.opacity = status ? 0.7 : 1
         }
     }
 }

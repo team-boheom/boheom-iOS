@@ -3,8 +3,12 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class HomeViewController: BaseVC<HomeViewModel> {
+
+    private let fetchHome = PublishRelay<Void>()
+    private let navigetToDetail = PublishRelay<String>()
 
     private let contentView = UIView().then {
         $0.backgroundColor = .gray50
@@ -15,27 +19,24 @@ class HomeViewController: BaseVC<HomeViewModel> {
         $0.contentInset = .init(top: 0, left: 0, bottom: 30, right: 0)
     }
 
-    private let headerLabelView = HomeHeaderView().then {
-        $0.userName = "포도맛포도"
-    }
+    private let headerLabelView = HomeHeaderView()
 
     private let profileButton = UIButton().then {
         $0.layer.cornerRadius = 20
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.gray400.cgColor
         $0.clipsToBounds = true
-        $0.setImage(.checkmark, for: .normal)
     }
 
-    private let newlyPostHeader = BoheomListHeader(title: "최근 모집글 ⏰")
-    private lazy var newlyPostflowLayout = UICollectionViewFlowLayout().then {
+    private let recentPostHeader = BoheomListHeader(title: "최근 모집글 ⏰")
+    private lazy var recentPostflowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.itemSize = .init(width: view.frame.width / 1.3, height: 168)
         $0.minimumLineSpacing = 10
         $0.minimumInteritemSpacing = 0
         $0.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
-    private lazy var newlyPostCollectionView = UICollectionView(frame: .zero, collectionViewLayout: newlyPostflowLayout).then {
+    private lazy var recentPostCollectionView = UICollectionView(frame: .zero, collectionViewLayout: recentPostflowLayout).then {
         $0.backgroundColor = .clear
         $0.showsHorizontalScrollIndicator = false
         $0.clipsToBounds = false
@@ -60,35 +61,85 @@ class HomeViewController: BaseVC<HomeViewModel> {
     }
 
     private let footerButton = HomeFooterButton()
+    private let floatingButton = HomeFloatingButton()
 
-    private let floatingButton = UIButton(type: .system).then {
-        $0.backgroundColor = .green400
-        $0.setImage(.plus, for: .normal)
-        $0.layer.cornerRadius = 10
-        $0.tintColor = .white
-        $0.setShadow()
+    override func viewWillAppear(_ animated: Bool) {
+        fetchHome.accept(())
     }
 
     override func attribute() {
-        view.backgroundColor = .yellow
-        newlyPostCollectionView.delegate = self
-        newlyPostCollectionView.dataSource = self
-        popularPostCollectionView.delegate = self
-        popularPostCollectionView.dataSource = self
-        homeScrollView.delegate = self
+        view.backgroundColor = .white
     }
 
     override func bind() {
-        let input = HomeViewModel.Input(profileSignal: profileButton.rx.tap.asObservable())
-        let _ = viewModel.transform(input: input)
+        let input = HomeViewModel.Input(
+            profileSignal: profileButton.rx.tap.asObservable(),
+            writePostSignal: floatingButton.rx.tap.asObservable(),
+            footerButtonSignal: footerButton.rx.tap.asObservable(),
+            fetchHomeSignal: fetchHome.asObservable(),
+            navigateDetailSignal: navigetToDetail.asObservable()
+        )
+        let output = viewModel.transform(input: input)
+
+        homeScrollView.rx.didScroll
+            .skip(1)
+            .map {
+                let target = self.homeScrollView
+                return (target.contentOffset.y - 30) >= (target.contentSize.height - target.frame.size.height)
+            }
+            .bind(to: floatingButton.rx.isAnimaticHidden)
+            .disposed(by: disposeBag)
+
+        recentPostCollectionView.rx.itemSelected
+            .map { index -> String in
+                guard let cell = self.recentPostCollectionView.cellForItem(at: index) as? PostCollectionViewCell else { return ""}
+                return cell.postId
+            }
+            .bind(to: navigetToDetail)
+            .disposed(by: disposeBag)
+
+        popularPostCollectionView.rx.itemSelected
+            .map { index -> String in
+                guard let cell = self.popularPostCollectionView.cellForItem(at: index) as? PostCollectionViewCell else { return ""}
+                return cell.postId
+            }
+            .bind(to: navigetToDetail)
+            .disposed(by: disposeBag)
+
+        output.profileData.asObservable()
+            .subscribe(with: self, onNext: { owner, date in
+                owner.headerLabelView.userName = date.nickname
+                owner.profileButton.kf.setImage(with: date.profile, for: .normal, placeholder: .defaltProfile)
+            })
+            .disposed(by: disposeBag)
+        
+        output.recentPostData.asObservable()
+            .map { $0.posts }
+            .bind(to: recentPostCollectionView.rx.items(
+                cellIdentifier: PostCollectionViewCell.identifier,
+                cellType: PostCollectionViewCell.self
+            )) { index, element, cell in
+                cell.setup(with: element)
+            }
+            .disposed(by: disposeBag)
+
+        output.popularPostData.asObservable()
+            .map { $0.posts.prefix(3) }
+            .bind(to: popularPostCollectionView.rx.items(
+                cellIdentifier: PostCollectionViewCell.identifier,
+                cellType: PostCollectionViewCell.self
+            )) { index, element, cell in
+                cell.setup(with: element, isRanking: true, ranking: index + 1)
+            }
+            .disposed(by: disposeBag)
     }
 
     override func addView() {
         contentView.addSubviews(
             headerLabelView,
             profileButton,
-            newlyPostHeader,
-            newlyPostCollectionView,
+            recentPostHeader,
+            recentPostCollectionView,
             popularPostHeader,
             popularPostCollectionView,
             footerButton
@@ -116,22 +167,22 @@ class HomeViewController: BaseVC<HomeViewModel> {
             $0.width.height.equalTo(40)
             $0.trailing.equalToSuperview().inset(16)
         }
-        newlyPostHeader.snp.makeConstraints {
+        recentPostHeader.snp.makeConstraints {
             $0.top.equalTo(headerLabelView.snp.bottom).offset(26)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
-        newlyPostCollectionView.snp.makeConstraints {
-            $0.top.equalTo(newlyPostHeader.snp.bottom).offset(10)
+        recentPostCollectionView.snp.makeConstraints {
+            $0.top.equalTo(recentPostHeader.snp.bottom).offset(10)
             $0.height.equalTo(168)
             $0.leading.trailing.equalToSuperview()
         }
         popularPostHeader.snp.makeConstraints {
-            $0.top.equalTo(newlyPostCollectionView.snp.bottom).offset(34)
+            $0.top.equalTo(recentPostCollectionView.snp.bottom).offset(34)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         popularPostCollectionView.snp.updateConstraints {
             $0.top.equalTo(popularPostHeader.snp.bottom).offset(10)
-            $0.height.equalTo(popularPostCollectionView.contentSize.height)
+            $0.height.equalTo(popularPostCollectionView.contentSize.height + 1)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         footerButton.snp.makeConstraints {
@@ -142,28 +193,6 @@ class HomeViewController: BaseVC<HomeViewModel> {
             $0.width.height.equalTo(50)
             $0.trailing.equalToSuperview().inset(12)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-22)
-        }
-    }
-}
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostCollectionViewCell.identifier, for: indexPath) as? PostCollectionViewCell else { return UICollectionViewCell() }
-        cell.setup(category: "#뱅 #4인 #모여라 #퍼즐", title: "같이 뱅 하실래요?", content: "같이 뱅 할사람 모여라 블라블라블라블라블라블라블라블라블라블라")
-        return cell
-    }
-}
-
-extension HomeViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y - 30) >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-            floatingButton.isHidden = true
-        } else {
-            floatingButton.isHidden = false
         }
     }
 }

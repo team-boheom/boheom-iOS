@@ -6,6 +6,8 @@ class PostCollectionViewCell: UICollectionViewCell {
 
     static let identifier: String = "PostCollectionViewCell"
 
+    public var postId: String = ""
+
     private let categoryLabel = UILabel().then {
         $0.boheomLabel(font: .captionC1Regular, textColor: .green600)
     }
@@ -19,38 +21,41 @@ class PostCollectionViewCell: UICollectionViewCell {
         $0.numberOfLines = 2
     }
 
-    private let viewerCountLabel = IconLabel(iconImage: .eyeViewer).then {
-        $0.content = "23"
-    }
-    private let playerCountLabel = IconLabel(iconImage: .person).then {
-        $0.content = "1/4"
-    }
+    private let viewerCountLabel = IconLabel(iconImage: .eyeViewer)
+    private let playerCountLabel = IconLabel(iconImage: .person)
 
     private let rankBackView = UIView().then {
         $0.backgroundColor = .green150
         $0.layer.cornerRadius = 40
     }
     private let rankLabel = UILabel().then {
-        $0.text = "🥇"
         $0.font = .headerH1SemiBold
+        $0.textColor = .green700
+        $0.textAlignment = .center
     }
 
     private let applyButton = BoheomButton(text: "신청", font: .bodyB3Bold, type: .fill, cornerRadius: 4)
 
     public func setup(
-        category: String,
-        title: String,
-        content: String,
-        isRanking: Bool = false
+        with postData: PostEntity,
+        isRanking: Bool = false,
+        ranking: Int = 0
     ) {
-        categoryLabel.text = category
-        titleLabel.text = title
-        contentLabel.text = content
+        categoryLabel.text = toCategoryString(postData.tags)
+        titleLabel.text = postData.title
+        contentLabel.text = postData.content
+        viewerCountLabel.content = "\(postData.viewerCount)"
+        playerCountLabel.content = "\(postData.applyCount)/\(postData.recruitment)"
+        postId = postData.id
         backgroundColor = .white
         layer.cornerRadius = 8
         clipsToBounds = true
         rankBackView.isHidden = !isRanking
         rankLabel.isHidden = !isRanking
+        settingRanking(isRnaking: isRanking, rank: ranking)
+    }
+
+    override func layoutSubviews() {
         addview()
         layout()
     }
@@ -101,7 +106,28 @@ class PostCollectionViewCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(-24)
         }
         rankLabel.snp.makeConstraints {
+            $0.width.height.equalTo(30)
             $0.top.trailing.equalToSuperview().inset(8)
         }
+    }
+}
+
+extension PostCollectionViewCell {
+    private func toCategoryString(_ arr: [String]) -> String {
+        guard var categoryString = arr.first else { return "" }
+        for i in 1..<arr.count { categoryString = categoryString + " \(arr[i])" }
+        return categoryString
+    }
+
+    private func settingRanking(isRnaking: Bool, rank: Int) {
+        guard isRnaking else { return }
+        let rankMark: String
+        switch rank {
+        case 1: rankMark = "🥇"
+        case 2: rankMark = "🥈"
+        case 3: rankMark = "🥉"
+        default: rankMark = "\(rank)"
+        }
+        rankLabel.text = rankMark
     }
 }

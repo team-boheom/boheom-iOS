@@ -24,6 +24,8 @@ class AuthFlow: Flow {
             return navigateToLoginScreen()
         case .signupIsRequired:
             return navigateToSignupScreen()
+        case .homeIsRequired:
+            return navigateToHomeScreen()
         default:
             return .none
         }
@@ -62,4 +64,7 @@ class AuthFlow: Flow {
         ))
     }
 
+    private func navigateToHomeScreen() -> FlowContributors {
+        return .end(forwardToParentFlowWithStep: BoheomStep.homeIsRequired)
+    }
 }

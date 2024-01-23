@@ -16,10 +16,10 @@ public class BoheomBundle {
     private init() {}
 
     func getValue(type: bundleType) -> String {
-        guard let bundleValue = Bundle.main.object(forInfoDictionaryKey: type.bundleKey) as? String else {
+        guard let bundleValue = (Bundle.main.object(forInfoDictionaryKey: type.bundleKey) as? String)?.dropLast() else {
             print("‼️ Info.pilst is'n contain \"\(type.bundleKey)\"")
             return ""
         }
-        return bundleValue
+        return String(bundleValue)
     }
 }

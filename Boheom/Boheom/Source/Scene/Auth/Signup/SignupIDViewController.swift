@@ -33,9 +33,17 @@ class SignupIDViewController: BaseVC<SignupViewModel> {
             IdNextSignal: nextButton.rx.tap.asObservable(),
             passwordNextSignal: nil,
             completeNextSignal: nil,
-            navigateBackSignal: backButton.rx.tap.asObservable()
+            navigateBackSignal: backButton.rx.tap.asObservable(),
+            nickNameTextObservable: nil,
+            idTextObservable: inputTextField.textField.rx.text.orEmpty.asObservable(),
+            passwordTextObservable: nil,
+            passwordCheckTextObservable: nil
         )
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+
+        output.idNextDisable.asObservable()
+            .bind(to: nextButton.rx.isDisable)
+            .disposed(by: disposeBag)
     }
 
     override func addView() {

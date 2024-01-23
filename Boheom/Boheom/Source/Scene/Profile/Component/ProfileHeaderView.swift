@@ -25,12 +25,15 @@ class ProfileHeaderView: UIView {
         backgroundColor = .white
         layer.cornerRadius = 15
         setShadow()
-        addview()
-        layout()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        addview()
+        layout()
     }
 
     private func addview() {
@@ -62,11 +65,11 @@ class ProfileHeaderView: UIView {
 
 extension ProfileHeaderView {
     public func setup(
-        profileURL: String,
+        profileURL: URL?,
         nickName: String?,
         id: String?
     ) {
-        profileImageView.kf.setImage(with: URL(string: profileURL))
+        profileImageView.kf.setImage(with: profileURL, placeholder: UIImage.defaltProfile)
         nickNameLabel.text = nickName
         idLabel.text = id
     }

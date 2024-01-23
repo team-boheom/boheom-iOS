@@ -17,6 +17,8 @@ public extension BoheomAPI {
 
     var task: Task { .requestPlain }
 
+    var validationType: ValidationType { .successCodes }
+
     var errorMapper: [Int: Error]? { nil }
 
     var headers: [String : String]? {

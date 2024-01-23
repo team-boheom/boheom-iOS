@@ -5,12 +5,13 @@ import RxSwift
 import RxCocoa
 
 class LoginViewController: BaseVC<LoginViewModel> {
-    
-    private let headerLabel = LoginDynamicHeader()
 
+    private let toastController = ToastViewController()
+
+    private let headerLabel = LoginDynamicHeader()
     private let idTextField = BoheomTextField(title: "아이디", placeholder: "아이디를 입력하세요.")
     private let passwordTextField = BoheomTextField(title: "비밀번호", placeholder: "비밀번호를 입력하세요.", isSecure: true)
-    
+
     private let loginButton = BoheomButton(text: "로그인", type: .fill)
     private let signupMarkLabel = UILabel().then {
         $0.boheomLabel(text: "아직 계정이 없으신가요? ", font: .captionC1Light)
@@ -20,14 +21,23 @@ class LoginViewController: BaseVC<LoginViewModel> {
     override func attribute() {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
+        addChild(toastController)
     }
 
     override func bind() {
         let input = LoginViewModel.Input(
             signupSignal: signupButton.rx.tap.asObservable(),
-            loginSignal: loginButton.rx.tap.asObservable()
+            loginSignal: loginButton.rx.tap.asObservable(),
+            idTextObservable: idTextField.textField.rx.text.orEmpty.asObservable(),
+            passwordTextObservable: passwordTextField.textField.rx.text.orEmpty.asObservable()
         )
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+
+        output.errorMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, msg in
+                owner.toastController.presentToast(with: msg)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func addView() {
@@ -37,7 +47,8 @@ class LoginViewController: BaseVC<LoginViewModel> {
             passwordTextField,
             loginButton,
             signupMarkLabel,
-            signupButton
+            signupButton,
+            toastController.view
         )
     }
 
@@ -47,7 +58,7 @@ class LoginViewController: BaseVC<LoginViewModel> {
             $0.leading.equalToSuperview().inset(23)
         }
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(headerLabel.snp.bottom).offset(100)
+            $0.top.equalTo(headerLabel.snp.bottom).offset(view.frame.height / (view.safeAreaInsets.bottom == 0 ? 15 : 10))
             $0.leading.trailing.equalToSuperview().inset(16)
         }
         passwordTextField.snp.makeConstraints {

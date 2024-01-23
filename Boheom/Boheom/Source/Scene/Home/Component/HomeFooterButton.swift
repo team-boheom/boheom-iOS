@@ -21,7 +21,7 @@ class HomeFooterButton: UIButton {
     }
 
     override var isHighlighted: Bool {
-        didSet { self.layer.opacity = isHighlighted ? 0.5 : 1 }
+        didSet { highlightAnimation(isHighlighted) }
     }
 
     init() {
@@ -56,6 +56,13 @@ class HomeFooterButton: UIButton {
         }
         self.snp.makeConstraints {
             $0.bottom.equalTo(secondHeaderLabel).offset(12)
+        }
+    }
+
+    private func highlightAnimation(_ status: Bool) {
+        UIView.animate(withDuration: 0.1, delay: 0) {
+            self.transform = status ? .init(scaleX: 0.98, y: 0.98) : .identity
+            self.layer.opacity = status ? 0.7 : 1
         }
     }
 }

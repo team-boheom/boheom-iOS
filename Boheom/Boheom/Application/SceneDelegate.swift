@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let window else { return }
         let appFlow = AppFlow(rootPresentable: window)
-        self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: BoheomStep.homeIsRequired))
+        self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: BoheomStep.onBoardingIsRequired))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

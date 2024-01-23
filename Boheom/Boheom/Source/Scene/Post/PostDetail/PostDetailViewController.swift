@@ -6,8 +6,10 @@ import RxCocoa
 
 class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
-    private lazy var backButton = BoheomBackButton(navigationController)
+    public var postID: String = ""
+    private let fetchDetail = PublishRelay<String>()
 
+    private lazy var backButton = BoheomBackButton(navigationController)
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
         $0.contentInset = .init(top: 0, left: 0, bottom: 30, right: 0)
@@ -16,19 +18,20 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
         $0.backgroundColor = .white
     }
 
-    private let headerView = PostDetailHeaderView().then {
-        $0.setup(category: "#뱅 #4인 #모여라 #퍼즐", title: "같이 뱅 하실래요?", nickName: "닉네임뭐하지", date: "2024년 1월 1일", viewer: "23", player: "1/4")
-    }
+    private let headerView = PostDetailHeaderView()
 
     private let contentLabel = UILabel().then {
         $0.font = .bodyB1Regular
         $0.numberOfLines = 0
         $0.textAlignment = .left
         $0.lineBreakStrategy = .pushOut
-        $0.text = "같이 뱅 할 사람 모여라 블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라\n블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라블라같이 뱅 할 사람 모여라"
     }
 
     private let applyButton = BoheomButton(text: "신청", font: .bodyB3Bold, type: .fill, cornerRadius: 4)
+
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDetail.accept(postID)
+    }
 
     override func attribute() {
         view.backgroundColor = .white
@@ -67,5 +70,18 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
             $0.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(contentLabel.snp.bottom).offset(26)
         }
+    }
+
+    override func bind() {
+        let input = PostDetailViewModel.Input(fetchDetailSignal: fetchDetail.asObservable())
+        let output = viewModel.transform(input: input)
+
+        output.postDatailData.asObservable()
+            .subscribe(with: self, onNext: { owner, data in
+                owner.headerView.setup(with: data)
+                owner.contentLabel.text = data.content
+                owner.applyButton.isDisable = data.isMine
+            })
+            .disposed(by: disposeBag)
     }
 }

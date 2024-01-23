@@ -5,6 +5,8 @@ import RxSwift
 import RxCocoa
 
 class SignupPasswordViewController: BaseVC<SignupViewModel> {
+
+    private let toastController = ToastViewController()
     private let headerView = SubContentHeader(
         headerText: "비밀번호는 무엇인가요?",
         subContentText: "이제 마지막 입니다. 비밀번호를 알려주세요!"
@@ -22,6 +24,7 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
+        addChild(toastController)
     }
 
     override func bind() {
@@ -30,9 +33,23 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
             IdNextSignal: nil,
             passwordNextSignal: nextButton.rx.tap.asObservable(),
             completeNextSignal: nil,
-            navigateBackSignal: backButton.rx.tap.asObservable()
+            navigateBackSignal: backButton.rx.tap.asObservable(),
+            nickNameTextObservable: nil,
+            idTextObservable: nil,
+            passwordTextObservable: inputTextField.textField.rx.text.orEmpty.asObservable(),
+            passwordCheckTextObservable: inputCheckTextField.textField.rx.text.orEmpty.asObservable()
         )
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+
+        output.passwordNextDisable.asObservable()
+            .bind(to: nextButton.rx.isDisable)
+            .disposed(by: disposeBag)
+
+        output.errorMessage.asObservable()
+            .bind(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func addView() {
@@ -41,7 +58,8 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
             inputTextField,
             inputCheckTextField,
             backButton,
-            nextButton
+            nextButton,
+            toastController.view
         )
     }
 

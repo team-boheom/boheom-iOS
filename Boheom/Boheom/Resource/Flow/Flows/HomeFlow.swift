@@ -10,6 +10,7 @@ class HomeFlow: Flow {
     private let rootPresentable = {
         let navigationVC = UINavigationController()
         navigationVC.navigationBar.isHidden = true
+        navigationVC.view.backgroundColor = .white
         return navigationVC
     }()
 
@@ -22,8 +23,10 @@ class HomeFlow: Flow {
             return navigateToHomeScreen()
         case .profileIsRequired:
             return navigateToProfileScreen()
-        case .postDetailIsRequired:
-            return navigateToPostDetailScreen()
+        case .postDetailIsRequired(let postID):
+            return navigateToPostDetailScreen(postID: postID)
+        case .postWriteIsRequired:
+            return navigateToPostWriteScreen()
         default:
             return .none
         }
@@ -49,13 +52,24 @@ class HomeFlow: Flow {
         ))
     }
 
-    private func navigateToPostDetailScreen() -> FlowContributors {
+    private func navigateToPostDetailScreen(postID: String) -> FlowContributors {
         let postDetailVC = container.resolve(PostDetailViewController.self)!
+        postDetailVC.postID = postID
 
         self.rootPresentable.pushViewController(postDetailVC, animated: true)
         return .one(flowContributor: .contribute(
             withNextPresentable: postDetailVC,
             withNextStepper: postDetailVC.viewModel
+        ))
+    }
+
+    private func navigateToPostWriteScreen() -> FlowContributors {
+        let postWritelVC = container.resolve(PostWriteViewController.self)!
+
+        self.rootPresentable.pushViewController(postWritelVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: postWritelVC,
+            withNextStepper: postWritelVC.viewModel
         ))
     }
 }

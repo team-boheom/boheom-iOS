@@ -11,7 +11,7 @@ open class JWTPlugin: PluginType {
         }
 
         var appendRequest = request
-        appendRequest.addValue(tokenStorage.getToken(ofType: boheomTarget.tokenType), forHTTPHeaderField: boheomTarget.tokenType.keyString)
+        appendRequest.addValue("Bearer " + tokenStorage.getToken(ofType: boheomTarget.tokenType), forHTTPHeaderField: boheomTarget.tokenType.keyString)
         return appendRequest
     }
 }

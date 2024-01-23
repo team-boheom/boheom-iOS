@@ -18,7 +18,25 @@ class AuthService {
             }).catch {
                 let moyaError = $0 as? MoyaError
                 guard moyaError?.response?.statusCode != nil else { return .error(AuthServiceError.noNetwork) }
-                return .error(AuthServiceError.failLogin)
+                guard let statusCore = moyaError?.response?.statusCode else { return .error($0) }
+                switch statusCore {
+                case 500: return .error(AuthServiceError.serverError)
+                default: return .error(AuthServiceError.failLogin)
+                }
+            }
+            .asCompletable()
+    }
+
+    func signup(request: SignupUserInfoRequest) -> Completable {
+        provider.rx.request(.signup(request))
+            .catch {
+                let moyaError = $0 as? MoyaError
+                guard moyaError?.response?.statusCode != nil else { return .error(AuthServiceError.noNetwork) }
+                guard let statusCore = moyaError?.response?.statusCode else { return .error($0) }
+                switch statusCore {
+                case 409: return .error(AuthServiceError.conflict)
+                default: return .error(AuthServiceError.failSignup)
+                }
             }
             .asCompletable()
     }
