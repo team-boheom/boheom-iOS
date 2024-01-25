@@ -114,6 +114,8 @@
 		4BE00E5C2B5FD1930023115A /* String+toDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E5B2B5FD1930023115A /* String+toDate.swift */; };
 		4BE00E5E2B5FD1D70023115A /* DateFormatIndicated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E5D2B5FD1D70023115A /* DateFormatIndicated.swift */; };
 		4BE00E612B616D3B0023115A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E602B616D3B0023115A /* ServiceError.swift */; };
+		4BE00E632B624C640023115A /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E622B624C640023115A /* AppStepper.swift */; };
+		4BE00E662B624D550023115A /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E652B624D550023115A /* KeychainStorage.swift */; };
 		4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */; };
 		4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA32B5E4653009A8DC4 /* UserService.swift */; };
 		4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */; };
@@ -221,6 +223,8 @@
 		4BE00E5B2B5FD1930023115A /* String+toDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDate.swift"; sourceTree = "<group>"; };
 		4BE00E5D2B5FD1D70023115A /* DateFormatIndicated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatIndicated.swift; sourceTree = "<group>"; };
 		4BE00E602B616D3B0023115A /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		4BE00E622B624C640023115A /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		4BE00E652B624D550023115A /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		4BFF7AA32B5E4653009A8DC4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
@@ -386,6 +390,7 @@
 				4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */,
 				4B8A4CEF2B567600007F7A3F /* SignupFlow.swift */,
 				4B8A4D332B58DEE4007F7A3F /* HomeFlow.swift */,
+				4BE00E622B624C640023115A /* AppStepper.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 		4B8A4D002B56D9FF007F7A3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				4BE00E642B624D3D0023115A /* Keychain */,
 				4BE00E5F2B616D2A0023115A /* Error */,
 				4B8A4CF22B56CFD1007F7A3F /* Logger */,
 				4B8A4CF82B56D190007F7A3F /* API */,
@@ -773,6 +779,14 @@
 				4BE00E602B616D3B0023115A /* ServiceError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		4BE00E642B624D3D0023115A /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				4BE00E652B624D550023115A /* KeychainStorage.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		4BFF7A9D2B5E44CD009A8DC4 /* UserService */ = {
@@ -1021,6 +1035,7 @@
 				4B8A4D682B5BE91E007F7A3F /* SignupUserInfoRequest.swift in Sources */,
 				4BE00E412B5F89290023115A /* PostResponse.swift in Sources */,
 				4B8A4D642B5AB8C8007F7A3F /* CategoryListViewCell.swift in Sources */,
+				4BE00E662B624D550023115A /* KeychainStorage.swift in Sources */,
 				4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */,
 				4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */,
 				4B8A4D402B591C9F007F7A3F /* IconLabel.swift in Sources */,
@@ -1073,6 +1088,7 @@
 				4BFF7AAD2B5E5FFC009A8DC4 /* UserServiceError.swift in Sources */,
 				4BE00E5C2B5FD1930023115A /* String+toDate.swift in Sources */,
 				4B8A4D5D2B5A8786007F7A3F /* PostDetailHeaderView.swift in Sources */,
+				4BE00E632B624C640023115A /* AppStepper.swift in Sources */,
 				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,
 				4BFF7AAA2B5E5EA1009A8DC4 /* ProfileEntity.swift in Sources */,
 				4B8A4D452B5A3E91007F7A3F /* ProfileViewModel.swift in Sources */,
