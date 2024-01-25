@@ -11,6 +11,12 @@ class HomeViewModel: ViewModelType, Stepper {
     private let userService: UserService
     private let feedService: FeedService
 
+    private var recentPostList: [PostEntity] = []
+    private var popularPostList: [PostEntity] = []
+
+    private let recentPostData = PublishRelay<PostListEntity>()
+    private let popularPostData = PublishRelay<PostListEntity>()
+
     init( userService: UserService, feedService: FeedService) {
         self.userService = userService
         self.feedService = feedService
@@ -37,8 +43,6 @@ class HomeViewModel: ViewModelType, Stepper {
     func transform(input: Input) -> Output {
 
         let profileData = PublishRelay<ProfileEntity>()
-        let recentPostData = PublishRelay<PostListEntity>()
-        let popularPostData = PublishRelay<PostListEntity>()
         let errorMessage = PublishRelay<String>()
         let successMessage = PublishRelay<String>()
 
@@ -81,7 +85,10 @@ class HomeViewModel: ViewModelType, Stepper {
                         return .never()
                     }
             }
-            .bind(to: recentPostData)
+            .bind(with: self, onNext: { owner, data in
+                owner.recentPostList = data.posts
+                owner.recentPostData.accept(data)
+            })
             .disposed(by: disposeBag)
 
         input.fetchHomeSignal
@@ -92,31 +99,40 @@ class HomeViewModel: ViewModelType, Stepper {
                         return .never()
                     }
             }
-            .bind(to: popularPostData)
+            .bind(with: self, onNext: { owner, data in
+                owner.popularPostList = data.posts
+                owner.popularPostData.accept(data)
+            })
             .disposed(by: disposeBag)
 
         input.applySignal
             .flatMap {
                 self.feedService.applyPost(feedId: $0)
-                    .andThen(Single.just("성공적으로 신청하였습니다!"))
+                    .andThen(Single.just((message:"성공적으로 신청하였습니다!", postID: $0)))
                     .catch {
                         errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
-            .bind(to: successMessage)
+            .bind(with: self, onNext: { owner, data in
+                owner.changePostValue(postID: data.postID)
+                successMessage.accept(data.message)
+            })
             .disposed(by: disposeBag)
 
         input.cancelApplySignal
             .flatMap {
                 self.feedService.cancelApply(feedId: $0)
-                    .andThen(Single.just("신청을 취소하였습니다."))
+                    .andThen(Single.just((message:"신청을 취소하였습니다.", postID: $0)))
                     .catch {
                         errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
-            .bind(to: successMessage)
+            .bind(with: self, onNext: { owner, data in
+                owner.changePostValue(postID: data.postID)
+                successMessage.accept(data.message)
+            })
             .disposed(by: disposeBag)
 
         return Output(
@@ -126,5 +142,47 @@ class HomeViewModel: ViewModelType, Stepper {
             errorMessage: errorMessage.asSignal(),
             successMessage: successMessage.asSignal()
         )
+    }
+}
+
+extension HomeViewModel {
+    private func changePostValue(postID: String) {
+        changeRecentPost(postID: postID)
+        changePopularPost(postID: postID)
+
+        recentPostData.accept(.init(posts: recentPostList))
+        popularPostData.accept(.init(posts: popularPostList))
+    }
+
+    private func changeRecentPost(postID: String) {
+        guard let recentIndex = recentPostList.firstIndex(where: { $0.id == postID }) else { return }
+        let targetPost = recentPostList[recentIndex]
+        let changePost: PostEntity = .init(
+            id: targetPost.id,
+            title: targetPost.title,
+            content: targetPost.content,
+            viewerCount: targetPost.viewerCount,
+            recruitment: targetPost.recruitment,
+            applyCount: targetPost.applyCount + (targetPost.isApplied ? -1 : 1),
+            tags: targetPost.tags,
+            isApplied: !targetPost.isApplied
+        )
+        recentPostList[recentIndex] = changePost
+    }
+
+    private func changePopularPost(postID: String) {
+        guard let recentIndex = popularPostList.firstIndex(where: { $0.id == postID }) else { return }
+        let targetPost = popularPostList[recentIndex]
+        let changePost: PostEntity = .init(
+            id: targetPost.id,
+            title: targetPost.title,
+            content: targetPost.content,
+            viewerCount: targetPost.viewerCount,
+            recruitment: targetPost.recruitment,
+            applyCount: targetPost.applyCount + (targetPost.isApplied ? -1 : 1),
+            tags: targetPost.tags,
+            isApplied: !targetPost.isApplied
+        )
+        popularPostList[recentIndex] = changePost
     }
 }

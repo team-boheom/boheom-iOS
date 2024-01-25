@@ -26,6 +26,8 @@ class HomeFlow: Flow {
             return navigateToPostDetailScreen(postID: postID)
         case .postWriteIsRequired:
             return navigateToPostWriteScreen()
+        case .navigateBackRequired:
+            return navigateToBack()
         default:
             return .none
         }
@@ -70,5 +72,10 @@ class HomeFlow: Flow {
             withNextPresentable: postWritelVC,
             withNextStepper: postWritelVC.viewModel
         ))
+    }
+
+    private func navigateToBack() -> FlowContributors {
+        self.rootPresentable.popViewController(animated: true)
+        return .none
     }
 }

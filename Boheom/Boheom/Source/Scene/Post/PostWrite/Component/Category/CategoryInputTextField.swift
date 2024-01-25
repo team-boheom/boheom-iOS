@@ -43,24 +43,33 @@ class CategoryInputTextField: BoheomTextField {
         categoryListView.rx.setDelegate(self)
             .disposed(by: disposeBag)
 
+        categoryListView.rx.itemSelected
+            .subscribe(with: self, onNext: { owner, index in
+                var appendValue = owner.categoryList.value
+                appendValue.remove(at: index.item)
+                owner.categoryList.accept(appendValue)
+            })
+            .disposed(by: disposeBag)
+
         categoryList
             .bind(to: categoryListView.rx.items(
                 cellIdentifier: CategoryListViewCell.identifier,
                 cellType: CategoryListViewCell.self
             )) { [weak self] index, element, cell in
                 guard let self else { return }
-                cell.setup(category: "#\(element)")
-                self.layout()
+                cell.setup(category: element)
+                layout()
             }
             .disposed(by: disposeBag)
 
         appendCategoryButton.rx.tap.compactMap { self.textField.text }
             .filter { !$0.isEmpty }
             .bind(with: self, onNext: { owner, str in
-                var appendValue = owner.categoryList.value
-                appendValue.append(str)
-                owner.categoryList.accept(appendValue)
                 owner.textField.text = ""
+                guard str.count <= 6 && owner.categoryList.value.count < 4 else { return }
+                var appendValue = owner.categoryList.value
+                appendValue.append("#\(str)")
+                owner.categoryList.accept(appendValue)
             })
             .disposed(by: disposeBag)
     }

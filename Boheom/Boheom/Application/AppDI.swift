@@ -38,8 +38,9 @@ public extension Container {
         self.register(PostDetailViewModel.self) { resolver in
             PostDetailViewModel(feedService: resolver.resolve(FeedService.self)!)
         }
-        // TODO: service 만들어서 주입해야 함
-        self.register(PostWriteViewModel.self) { _ in PostWriteViewModel() }
+        self.register(PostWriteViewModel.self) { resolver in
+            PostWriteViewModel(feedService: resolver.resolve(FeedService.self)!)
+        }
     }
 
     private func registerViewControllerDependencies() {

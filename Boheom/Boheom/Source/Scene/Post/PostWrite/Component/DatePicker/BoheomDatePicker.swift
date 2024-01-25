@@ -20,7 +20,6 @@ class BoheomDatePicker: UITextField {
         super.init(frame: .zero)
         setting(placeholder)
         bind()
-        layout()
     }
 
     required init?(coder: NSCoder) {
@@ -35,15 +34,11 @@ extension BoheomDatePicker {
                 self.dateFormatter.dateFormat = "yyyy-MM-dd"
                 return self.dateFormatter.string(from: $0)
             }
-            .bind(to: self.rx.text)
+            .bind(with: self, onNext: { owner, date in
+                self.text = date
+                owner.selectDate.accept(date)
+            })
             .disposed(by: disposeBag)
-    }
-
-    private func layout() {
-        self.snp.makeConstraints {
-            $0.width.equalTo(135)
-            $0.height.equalTo(48)
-        }
     }
 
     private func setting(_ placeholder: String) {

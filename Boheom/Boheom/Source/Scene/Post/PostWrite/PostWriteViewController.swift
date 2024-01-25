@@ -8,6 +8,8 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
 
     private lazy var backButton = BoheomBackButton(navigationController)
 
+
+    private let toastController = ToastViewController()
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
@@ -22,10 +24,11 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
     private let maxPlayerTextField = BoheomTextField(title: "모집 인원", placeholder: "최대 모집 인원 수를 입력하세요.", keyboardType: .asciiCapableNumberPad)
     private let recruitmentDatePicker = PostDatePickerView(title: "모집일")
     private let categoryTextField = CategoryInputTextField()
-    private let applyButton = BoheomButton(text: "작성", type: .fill)
+    private let writeButton = BoheomButton(text: "작성", type: .fill)
 
     override func attribute() {
         view.backgroundColor = .white
+        addChild(toastController)
     }
 
     override func addView() {
@@ -38,7 +41,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
             categoryTextField
         )
         scrollView.addSubview(contentView)
-        view.addSubviews(scrollView, backButton, applyButton)
+        view.addSubviews(scrollView, backButton, writeButton, toastController.view)
     }
 
     override func layout() {
@@ -77,10 +80,33 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
             $0.top.equalTo(recruitmentDatePicker.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
-        applyButton.snp.makeConstraints {
+        writeButton.snp.makeConstraints {
             $0.height.equalTo(44)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
+    }
+
+    override func bind() {
+        let input = PostWriteViewModel.Input(
+            titleTextSignal: titleTextField.textField.rx.text.orEmpty.asObservable(),
+            contentTextSignal: contentTextView.inputTextView.rx.text.orEmpty.asObservable(),
+            recruitmentTextSignal: maxPlayerTextField.textField.rx.text.orEmpty.asObservable(),
+            startDayTextSignal: recruitmentDatePicker.startInputDatePicker.selectDate.asObservable(),
+            endDayTextSignal: recruitmentDatePicker.endInputDatePicker.selectDate.asObservable(),
+            tagListSignal: categoryTextField.categoryList.asObservable(),
+            writeButtonSignal: writeButton.rx.tap.asObservable()
+        )
+        let output = viewModel.transform(input: input)
+
+        output.writeButtonDisable.asObservable()
+            .bind(to: writeButton.rx.isDisable)
+            .disposed(by: disposeBag)
+
+        output.errorMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .error)
+            })
+            .disposed(by: disposeBag)
     }
 }

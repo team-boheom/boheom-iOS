@@ -13,8 +13,8 @@ class PostDatePickerView: UIView {
         $0.textAlignment = .center
     }
 
-    private lazy var startInputDatePicker = BoheomDatePicker(placeholder: "시작일")
-    private lazy var endInputDatePicker = BoheomDatePicker(placeholder: "마감일")
+    let startInputDatePicker = BoheomDatePicker(placeholder: "시작일")
+    let endInputDatePicker = BoheomDatePicker(placeholder: "마감일")
 
     init(title: String?) {
         super.init(frame: .zero)
@@ -31,10 +31,14 @@ class PostDatePickerView: UIView {
             $0.leading.top.equalToSuperview()
         }
         startInputDatePicker.snp.makeConstraints {
+            $0.width.equalTo(135)
+            $0.height.equalTo(48)
             $0.leading.equalToSuperview()
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
         }
         endInputDatePicker.snp.makeConstraints {
+            $0.width.equalTo(135)
+            $0.height.equalTo(48)
             $0.trailing.equalToSuperview()
             $0.top.equalTo(startInputDatePicker)
         }
