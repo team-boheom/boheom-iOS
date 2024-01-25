@@ -9,11 +9,13 @@ struct PostResponse: Decodable {
         case tags
         case recruitment
         case applyCount = "apply_count"
+        case isApplied = "is_applied"
     }
 
     let id, title, content: String
     let viewerCount, recruitment, applyCount: Int
     let tags: [String]
+    let isApplied: Bool
 }
 
 extension PostResponse {
@@ -25,7 +27,8 @@ extension PostResponse {
             viewerCount: viewerCount,
             recruitment: recruitment,
             applyCount: applyCount,
-            tags: tags
+            tags: tags,
+            isApplied: isApplied
         )
     }
 }

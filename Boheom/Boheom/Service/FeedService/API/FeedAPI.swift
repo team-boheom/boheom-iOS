@@ -16,7 +16,7 @@ enum FeedAPI {
 
 extension FeedAPI: BoheomAPI {
     var domain: String { "/feeds" }
-    
+
     var urlPath: String {
         switch self {
         case .writePost:
@@ -57,8 +57,7 @@ extension FeedAPI: BoheomAPI {
         [
             400: FeedServiceError.badRequest,
             404: FeedServiceError.notFound,
-            409: FeedServiceError.conflict,
-            500: FeedServiceError.serverError
+            409: FeedServiceError.conflict
         ]
     }
 

@@ -8,6 +8,10 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
 
     private let fetchProfile = PublishRelay<Void>()
     private let navigetToDetail = PublishRelay<String>()
+    private let applyPost = PublishRelay<String>()
+    private let cancelApplyPost = PublishRelay<String>()
+
+    private let toastController = ToastViewController()
 
     private lazy var backButton = BoheomBackButton(self.navigationController)
 
@@ -63,6 +67,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
 
     override func attribute() {
         view.backgroundColor = .gray50
+        addChild(toastController)
     }
 
     override func addView() {
@@ -78,7 +83,8 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         view.addSubviews(
             backgroundView,
             scrollView,
-            backButton
+            backButton,
+            toastController.view
         )
     }
 
@@ -129,10 +135,11 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         }
     }
 
-    // TODO: 이 무슨 ㅈ같은 버그 왜나는지 찾기;
     override func bind() {
         let input = ProfileViewModel.Input(
             fetchProfileSignal: fetchProfile.asObservable(),
+            applySignal: applyPost.asObservable(),
+            cancelApplySignal: cancelApplyPost.asObservable(),
             navigateDetailSignal: navigetToDetail.asObservable()
         )
         let output = viewModel.transform(input: input)
@@ -144,6 +151,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 cellType: PostCollectionViewCell.self
             )) { index, element, cell in
                 cell.setup(with: element)
+                cell.cellDelegate = self
             }
             .disposed(by: disposeBag)
 
@@ -154,6 +162,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 cellType: PostCollectionViewCell.self
             )) { index, element, cell in
                 cell.setup(with: element)
+                cell.cellDelegate = self
             }
             .disposed(by: disposeBag)
 
@@ -182,5 +191,27 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 )
             })
             .disposed(by: disposeBag)
+
+        output.errorMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .error)
+            })
+            .disposed(by: disposeBag)
+
+        output.successMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .succees)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension ProfileViewController: PostCollectionViewCellDelegate {
+    func applyButtonDidTap(postID: String) {
+        applyPost.accept(postID)
+    }
+
+    func cancelApplyButtonDidTap(postID: String) {
+        cancelApplyPost.accept(postID)
     }
 }

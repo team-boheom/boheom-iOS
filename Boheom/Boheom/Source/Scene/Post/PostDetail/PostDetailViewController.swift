@@ -8,6 +8,10 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
     public var postID: String = ""
     private let fetchDetail = PublishRelay<String>()
+    private let applyPost = PublishRelay<String>()
+    private let cancelApplyPost = PublishRelay<String>()
+
+    private let toastController = ToastViewController()
 
     private lazy var backButton = BoheomBackButton(navigationController)
     private let scrollView = UIScrollView().then {
@@ -28,6 +32,7 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
     }
 
     private let applyButton = BoheomButton(text: "신청", font: .bodyB3Bold, type: .fill, cornerRadius: 4)
+    private let applyCancelButton = BoheomButton(text: "취소", font: .bodyB3Bold, pointColor: .extraRed, type: .fill, cornerRadius: 4)
 
     override func viewWillAppear(_ animated: Bool) {
         fetchDetail.accept(postID)
@@ -35,12 +40,13 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
+        addChild(toastController)
     }
 
     override func addView() {
-        contentView.addSubviews(headerView, contentLabel, applyButton)
+        contentView.addSubviews(headerView, contentLabel, applyButton, applyCancelButton)
         scrollView.addSubview(contentView)
-        view.addSubviews(scrollView, backButton)
+        view.addSubviews(scrollView, backButton, toastController.view)
     }
 
     override func layout() {
@@ -53,7 +59,7 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
         }
         contentView.snp.makeConstraints {
             $0.top.width.equalToSuperview()
-            $0.bottom.equalTo(applyButton)
+            $0.bottom.equalTo(contentLabel).offset(50)
             $0.bottom.equalToSuperview()
         }
         headerView.snp.makeConstraints {
@@ -70,17 +76,51 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
             $0.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(contentLabel.snp.bottom).offset(26)
         }
+        applyCancelButton.snp.makeConstraints {
+            $0.width.equalTo(60)
+            $0.height.equalTo(32)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(contentLabel.snp.bottom).offset(26)
+        }
     }
 
     override func bind() {
-        let input = PostDetailViewModel.Input(fetchDetailSignal: fetchDetail.asObservable())
+        let input = PostDetailViewModel.Input(
+            fetchDetailSignal: fetchDetail.asObservable(),
+            applySignal: applyPost.asObservable(),
+            cancelApplySignal: cancelApplyPost.asObservable()
+        )
         let output = viewModel.transform(input: input)
+
+        applyButton.rx.tap
+            .map { self.postID }
+            .bind(to: applyPost)
+            .disposed(by: disposeBag)
+
+        applyCancelButton.rx.tap
+            .map { self.postID }
+            .bind(to: cancelApplyPost)
+            .disposed(by: disposeBag)
 
         output.postDatailData.asObservable()
             .subscribe(with: self, onNext: { owner, data in
                 owner.headerView.setup(with: data)
                 owner.contentLabel.text = data.content
                 owner.applyButton.isDisable = data.isMine
+                owner.applyButton.isHidden = data.isApplied
+                owner.applyCancelButton.isHidden = !data.isApplied
+            })
+            .disposed(by: disposeBag)
+
+        output.errorMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .error)
+            })
+            .disposed(by: disposeBag)
+
+        output.successMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .succees)
             })
             .disposed(by: disposeBag)
     }

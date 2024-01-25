@@ -9,18 +9,20 @@ class ProfileViewModel: ViewModelType, Stepper {
     var disposeBag: DisposeBag = .init()
 
     private let userService: UserService
-    private let feedServide: FeedService
+    private let feedService: FeedService
 
     init(
         userService: UserService,
-        feedServide: FeedService
+        feedService: FeedService
     ) {
         self.userService = userService
-        self.feedServide = feedServide
+        self.feedService = feedService
     }
 
     struct Input {
         let fetchProfileSignal: Observable<Void>
+        let applySignal: Observable<String>
+        let cancelApplySignal: Observable<String>
         let navigateDetailSignal: Observable<String>
     }
 
@@ -28,6 +30,8 @@ class ProfileViewModel: ViewModelType, Stepper {
         let profileData: Signal<ProfileEntity>
         let myPostData: Signal<PostListEntity>
         let applyPostData: Signal<PostListEntity>
+        let errorMessage: Signal<String>
+        let successMessage: Signal<String>
     }
 
     func transform(input: Input) -> Output {
@@ -35,6 +39,8 @@ class ProfileViewModel: ViewModelType, Stepper {
         let profileData = PublishRelay<ProfileEntity>()
         let myPostData = PublishRelay<PostListEntity>()
         let applyPostData = PublishRelay<PostListEntity>()
+        let errorMessage = PublishRelay<String>()
+        let successMessage = PublishRelay<String>()
 
         input.navigateDetailSignal
             .map { BoheomStep.postDetailIsRequired(postID: $0) }
@@ -45,7 +51,7 @@ class ProfileViewModel: ViewModelType, Stepper {
             .flatMap {
                 self.userService.fetchProfile()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
@@ -54,9 +60,9 @@ class ProfileViewModel: ViewModelType, Stepper {
 
         input.fetchProfileSignal
             .flatMap {
-                self.feedServide.fetchMyPost()
+                self.feedService.fetchMyPost()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
@@ -65,19 +71,45 @@ class ProfileViewModel: ViewModelType, Stepper {
 
         input.fetchProfileSignal
             .flatMap {
-                self.feedServide.fetchApplyPost()
+                self.feedService.fetchApplyPost()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
             .bind(to: applyPostData)
             .disposed(by: disposeBag)
-            
+
+        input.applySignal
+            .flatMap {
+                self.feedService.applyPost(feedId: $0)
+                    .andThen(Single.just("성공적으로 신청하였습니다!"))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: successMessage)
+            .disposed(by: disposeBag)
+
+        input.cancelApplySignal
+            .flatMap {
+                self.feedService.cancelApply(feedId: $0)
+                    .andThen(Single.just("신청을 취소하였습니다."))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: successMessage)
+            .disposed(by: disposeBag)
+
         return Output(
             profileData: profileData.asSignal(),
             myPostData: myPostData.asSignal(),
-            applyPostData: applyPostData.asSignal()
+            applyPostData: applyPostData.asSignal(),
+            errorMessage: errorMessage.asSignal(),
+            successMessage: successMessage.asSignal()
         )
     }
 }

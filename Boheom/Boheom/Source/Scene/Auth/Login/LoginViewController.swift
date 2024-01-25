@@ -34,8 +34,8 @@ class LoginViewController: BaseVC<LoginViewModel> {
         let output = viewModel.transform(input: input)
 
         output.errorMessage.asObservable()
-            .subscribe(with: self, onNext: { owner, msg in
-                owner.toastController.presentToast(with: msg)
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .error)
             })
             .disposed(by: disposeBag)
     }

@@ -21,6 +21,8 @@ class HomeViewModel: ViewModelType, Stepper {
         let writePostSignal: Observable<Void>
         let footerButtonSignal: Observable<Void>
         let fetchHomeSignal: Observable<Void>
+        let applySignal: Observable<String>
+        let cancelApplySignal: Observable<String>
         let navigateDetailSignal: Observable<String>
     }
 
@@ -28,6 +30,8 @@ class HomeViewModel: ViewModelType, Stepper {
         let profileData: Signal<ProfileEntity>
         let recentPostData: Signal<PostListEntity>
         let popularPostData: Signal<PostListEntity>
+        let errorMessage: Signal<String>
+        let successMessage: Signal<String>
     }
 
     func transform(input: Input) -> Output {
@@ -35,6 +39,8 @@ class HomeViewModel: ViewModelType, Stepper {
         let profileData = PublishRelay<ProfileEntity>()
         let recentPostData = PublishRelay<PostListEntity>()
         let popularPostData = PublishRelay<PostListEntity>()
+        let errorMessage = PublishRelay<String>()
+        let successMessage = PublishRelay<String>()
 
         input.navigateDetailSignal
             .map { BoheomStep.postDetailIsRequired(postID: $0) }
@@ -60,7 +66,7 @@ class HomeViewModel: ViewModelType, Stepper {
             .flatMap {
                 self.userService.fetchProfile()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
@@ -71,7 +77,7 @@ class HomeViewModel: ViewModelType, Stepper {
             .flatMap {
                 self.feedService.fetchRecentPost()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
@@ -82,17 +88,43 @@ class HomeViewModel: ViewModelType, Stepper {
             .flatMap {
                 self.feedService.fetchPopularPost()
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
             .bind(to: popularPostData)
             .disposed(by: disposeBag)
 
+        input.applySignal
+            .flatMap {
+                self.feedService.applyPost(feedId: $0)
+                    .andThen(Single.just("성공적으로 신청하였습니다!"))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: successMessage)
+            .disposed(by: disposeBag)
+
+        input.cancelApplySignal
+            .flatMap {
+                self.feedService.cancelApply(feedId: $0)
+                    .andThen(Single.just("신청을 취소하였습니다."))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: successMessage)
+            .disposed(by: disposeBag)
+
         return Output(
             profileData: profileData.asSignal(),
             recentPostData: recentPostData.asSignal(),
-            popularPostData: popularPostData.asSignal()
+            popularPostData: popularPostData.asSignal(),
+            errorMessage: errorMessage.asSignal(),
+            successMessage: successMessage.asSignal()
         )
     }
 }

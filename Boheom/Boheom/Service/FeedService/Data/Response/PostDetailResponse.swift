@@ -11,13 +11,14 @@ struct PostDetailResponse: Decodable {
         case view
         case recruitment
         case applyCount = "apply_count"
+        case isApplied = "is_applied"
         case isMine = "is_mine"
     }
 
     let id, title, content, username, createdAt: String
     let tags: [String]
     let view, recruitment, applyCount: Int
-    let isMine: Bool
+    let isMine, isApplied: Bool
 }
 
 extension PostDetailResponse {
@@ -32,7 +33,8 @@ extension PostDetailResponse {
             view: view,
             recruitment: recruitment,
             applyCount: applyCount,
-            isMine: isMine
+            isMine: isMine,
+            isApplied: isApplied
         )
     }
 }

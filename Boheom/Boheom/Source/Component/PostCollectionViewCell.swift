@@ -1,12 +1,21 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
+
+protocol PostCollectionViewCellDelegate: AnyObject {
+    func applyButtonDidTap(postID: String)
+    func cancelApplyButtonDidTap(postID: String)
+}
 
 class PostCollectionViewCell: UICollectionViewCell {
 
-    static let identifier: String = "PostCollectionViewCell"
+    private let disposeBag: DisposeBag = .init()
 
+    static let identifier: String = "PostCollectionViewCell"
     public var postId: String = ""
+    public var cellDelegate: PostCollectionViewCellDelegate?
 
     private let categoryLabel = UILabel().then {
         $0.boheomLabel(font: .captionC1Regular, textColor: .green600)
@@ -35,6 +44,16 @@ class PostCollectionViewCell: UICollectionViewCell {
     }
 
     private let applyButton = BoheomButton(text: "신청", font: .bodyB3Bold, type: .fill, cornerRadius: 4)
+    private let applyCancelButton = BoheomButton(text: "취소", font: .bodyB3Bold, pointColor: .extraRed, type: .fill, cornerRadius: 4)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        bind()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     public func setup(
         with postData: PostEntity,
@@ -52,6 +71,8 @@ class PostCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
         rankBackView.isHidden = !isRanking
         rankLabel.isHidden = !isRanking
+        applyButton.isHidden = postData.isApplied
+        applyCancelButton.isHidden = !postData.isApplied
         settingRanking(isRnaking: isRanking, rank: ranking)
     }
 
@@ -68,6 +89,7 @@ class PostCollectionViewCell: UICollectionViewCell {
             viewerCountLabel,
             playerCountLabel,
             applyButton,
+            applyCancelButton,
             rankBackView,
             rankLabel
         )
@@ -100,6 +122,12 @@ class PostCollectionViewCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(17)
         }
+        applyCancelButton.snp.makeConstraints {
+            $0.width.equalTo(60)
+            $0.height.equalTo(32)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(17)
+        }
         rankBackView.snp.makeConstraints {
             $0.width.height.equalTo(80)
             $0.trailing.equalToSuperview().offset(25)
@@ -109,6 +137,20 @@ class PostCollectionViewCell: UICollectionViewCell {
             $0.width.height.equalTo(30)
             $0.top.trailing.equalToSuperview().inset(8)
         }
+    }
+
+    private func bind() {
+        applyButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.cellDelegate?.applyButtonDidTap(postID: owner.postId)
+            })
+            .disposed(by: disposeBag)
+
+        applyCancelButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.cellDelegate?.cancelApplyButtonDidTap(postID: owner.postId)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

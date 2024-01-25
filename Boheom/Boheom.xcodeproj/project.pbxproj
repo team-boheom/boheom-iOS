@@ -113,6 +113,7 @@
 		4BE00E5A2B5FD1890023115A /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E592B5FD1890023115A /* Date+toString.swift */; };
 		4BE00E5C2B5FD1930023115A /* String+toDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E5B2B5FD1930023115A /* String+toDate.swift */; };
 		4BE00E5E2B5FD1D70023115A /* DateFormatIndicated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E5D2B5FD1D70023115A /* DateFormatIndicated.swift */; };
+		4BE00E612B616D3B0023115A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E602B616D3B0023115A /* ServiceError.swift */; };
 		4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */; };
 		4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA32B5E4653009A8DC4 /* UserService.swift */; };
 		4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */; };
@@ -219,6 +220,7 @@
 		4BE00E592B5FD1890023115A /* Date+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
 		4BE00E5B2B5FD1930023115A /* String+toDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDate.swift"; sourceTree = "<group>"; };
 		4BE00E5D2B5FD1D70023115A /* DateFormatIndicated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatIndicated.swift; sourceTree = "<group>"; };
+		4BE00E602B616D3B0023115A /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		4BFF7AA32B5E4653009A8DC4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 		4B8A4D002B56D9FF007F7A3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				4BE00E5F2B616D2A0023115A /* Error */,
 				4B8A4CF22B56CFD1007F7A3F /* Logger */,
 				4B8A4CF82B56D190007F7A3F /* API */,
 				4B8A4D032B56E698007F7A3F /* Bundle */,
@@ -760,6 +763,14 @@
 			isa = PBXGroup;
 			children = (
 				4BE00E552B5F99750023115A /* FeedServiceError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		4BE00E5F2B616D2A0023115A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				4BE00E602B616D3B0023115A /* ServiceError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -1058,6 +1069,7 @@
 				4B8A4D782B5D7E39007F7A3F /* HapticManager.swift in Sources */,
 				4BE00E562B5F99750023115A /* FeedServiceError.swift in Sources */,
 				4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */,
+				4BE00E612B616D3B0023115A /* ServiceError.swift in Sources */,
 				4BFF7AAD2B5E5FFC009A8DC4 /* UserServiceError.swift in Sources */,
 				4BE00E5C2B5FD1930023115A /* String+toDate.swift in Sources */,
 				4B8A4D5D2B5A8786007F7A3F /* PostDetailHeaderView.swift in Sources */,

@@ -19,10 +19,9 @@ class RestApiRemoteService<API: BoheomAPI> {
         provider.rx.request(api)
             .catch {
                 let moyaError = $0 as? MoyaError
-                guard let errorCode = moyaError?.response?.statusCode,
-                      let mappingError = api.errorMapper?[errorCode]
-                else { return .error($0) }
-
+                guard let errorCode = moyaError?.response?.statusCode else { return .error(ServiceError.onNetwork) }
+                if errorCode == 500 { return .error(ServiceError.servierError) }
+                guard let mappingError = api.errorMapper?[errorCode] else { return .error($0) }
                 return .error(mappingError)
             }
     }

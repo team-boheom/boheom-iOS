@@ -4,7 +4,6 @@ import Then
 
 class ToastView: UIView {
     private let iconImage = UIImageView().then {
-        $0.image = .xCircleFill
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .white
     }
@@ -13,10 +12,11 @@ class ToastView: UIView {
         $0.boheomLabel(font: .bodyB2Bold, textColor: .white)
     }
 
-    init(message: String) {
+    init(message: String, type: toastType) {
         super.init(frame: .zero)
+        iconImage.image = type.iconImege
         messageLabel.text = message
-        backgroundColor = .extraRed
+        backgroundColor = type.backgroundColor
     }
 
     required init?(coder: NSCoder) {

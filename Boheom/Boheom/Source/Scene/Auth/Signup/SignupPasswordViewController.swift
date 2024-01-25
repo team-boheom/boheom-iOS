@@ -47,7 +47,7 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
 
         output.errorMessage.asObservable()
             .bind(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message)
+                owner.toastController.presentToast(with: message, type: .error)
             })
             .disposed(by: disposeBag)
     }

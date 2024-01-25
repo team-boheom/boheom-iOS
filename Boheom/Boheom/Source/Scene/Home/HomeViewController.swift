@@ -9,6 +9,10 @@ class HomeViewController: BaseVC<HomeViewModel> {
 
     private let fetchHome = PublishRelay<Void>()
     private let navigetToDetail = PublishRelay<String>()
+    private let applyPost = PublishRelay<String>()
+    private let cancelApplyPost = PublishRelay<String>()
+
+    private let toastController = ToastViewController()
 
     private let contentView = UIView().then {
         $0.backgroundColor = .gray50
@@ -69,6 +73,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
+        addChild(toastController)
     }
 
     override func bind() {
@@ -77,6 +82,8 @@ class HomeViewController: BaseVC<HomeViewModel> {
             writePostSignal: floatingButton.rx.tap.asObservable(),
             footerButtonSignal: footerButton.rx.tap.asObservable(),
             fetchHomeSignal: fetchHome.asObservable(),
+            applySignal: applyPost.asObservable(),
+            cancelApplySignal: cancelApplyPost.asObservable(),
             navigateDetailSignal: navigetToDetail.asObservable()
         )
         let output = viewModel.transform(input: input)
@@ -120,6 +127,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
                 cellType: PostCollectionViewCell.self
             )) { index, element, cell in
                 cell.setup(with: element)
+                cell.cellDelegate = self
             }
             .disposed(by: disposeBag)
 
@@ -130,7 +138,20 @@ class HomeViewController: BaseVC<HomeViewModel> {
                 cellType: PostCollectionViewCell.self
             )) { index, element, cell in
                 cell.setup(with: element, isRanking: true, ranking: index + 1)
+                cell.cellDelegate = self
             }
+            .disposed(by: disposeBag)
+
+        output.errorMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .error)
+            })
+            .disposed(by: disposeBag)
+
+        output.successMessage.asObservable()
+            .subscribe(with: self, onNext: { owner, message in
+                owner.toastController.presentToast(with: message, type: .succees)
+            })
             .disposed(by: disposeBag)
     }
 
@@ -145,7 +166,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
             footerButton
         )
         homeScrollView.addSubview(contentView)
-        view.addSubviews(homeScrollView, floatingButton)
+        view.addSubviews(homeScrollView, floatingButton, toastController.view)
     }
 
     override func layout() {
@@ -194,5 +215,15 @@ class HomeViewController: BaseVC<HomeViewModel> {
             $0.trailing.equalToSuperview().inset(12)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-22)
         }
+    }
+}
+
+extension HomeViewController: PostCollectionViewCellDelegate {
+    func applyButtonDidTap(postID: String) {
+        applyPost.accept(postID)
+    }
+    
+    func cancelApplyButtonDidTap(postID: String) {
+        cancelApplyPost.accept(postID)
     }
 }

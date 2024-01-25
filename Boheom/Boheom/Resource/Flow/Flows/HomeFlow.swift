@@ -10,7 +10,6 @@ class HomeFlow: Flow {
     private let rootPresentable = {
         let navigationVC = UINavigationController()
         navigationVC.navigationBar.isHidden = true
-        navigationVC.view.backgroundColor = .white
         return navigationVC
     }()
 

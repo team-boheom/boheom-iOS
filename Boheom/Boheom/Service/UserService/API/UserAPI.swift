@@ -19,10 +19,7 @@ extension UserAPI: BoheomAPI {
     }
 
     var errorMapper: [Int : Error]? {
-        [
-            400: UserServiceError.badRequest,
-            500: UserServiceError.serverError
-        ]
+        [400: UserServiceError.badRequest]
     }
 
     var task: Task {

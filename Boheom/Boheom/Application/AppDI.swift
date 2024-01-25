@@ -32,7 +32,7 @@ public extension Container {
         self.register(ProfileViewModel.self) { resolver in
             ProfileViewModel(
                 userService: resolver.resolve(UserService.self)!,
-                feedServide: resolver.resolve(FeedService.self)!
+                feedService: resolver.resolve(FeedService.self)!
             )
         }
         self.register(PostDetailViewModel.self) { resolver in
