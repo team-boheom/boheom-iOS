@@ -28,6 +28,8 @@ class HomeFlow: Flow {
             return navigateToPostWriteScreen()
         case .navigateBackRequired:
             return navigateToBack()
+        case .applyerListIsRequired(let postID):
+            return presentToApplyerListScreen(postID: postID)
         default:
             return .none
         }
@@ -71,6 +73,17 @@ class HomeFlow: Flow {
         return .one(flowContributor: .contribute(
             withNextPresentable: postWritelVC,
             withNextStepper: postWritelVC.viewModel
+        ))
+    }
+
+    private func presentToApplyerListScreen(postID: String) -> FlowContributors {
+        let applyerListVC = container.resolve(ApplyerListViewController.self)!
+        applyerListVC.postID = postID
+
+        self.rootPresentable.present(applyerListVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: applyerListVC,
+            withNextStepper: applyerListVC.viewModel
         ))
     }
 

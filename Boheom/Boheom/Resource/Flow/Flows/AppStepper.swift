@@ -17,6 +17,10 @@ class AppStepper: Stepper {
         self.authService = container.resolve(AuthService.self)!
     }
 
+    var initialStep: Step {
+        BoheomStep.launchScreenIsRequired
+    }
+
     func readyToEmitSteps() {
         let userInfo: LoginUserInfoRequest = .init(
             id: keychainStorage.string(ofType: userStorageType.id),

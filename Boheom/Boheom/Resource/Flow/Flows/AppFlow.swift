@@ -19,11 +19,22 @@ class AppFlow: Flow {
             return navigateToOnBoardingScreen()
         case .homeIsRequired:
             return navigateToHomeScreen()
+        case .launchScreenIsRequired:
+            return presentTolaunchScreen()
         default:
             return .none
         }
     }
-    
+
+    private func presentTolaunchScreen() -> FlowContributors {
+        let launchVC = UIViewController()
+        launchVC.view.backgroundColor = .gray50
+
+        self.rootPresentable.rootViewController = launchVC
+        self.rootPresentable.makeKeyAndVisible()
+        return .none
+    }
+
     private func navigateToOnBoardingScreen() -> FlowContributors {
         let authFlow = AuthFlow()
         Flows.use(authFlow, when: .created) { root in

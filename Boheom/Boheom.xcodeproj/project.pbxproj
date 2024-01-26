@@ -116,6 +116,13 @@
 		4BE00E612B616D3B0023115A /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E602B616D3B0023115A /* ServiceError.swift */; };
 		4BE00E632B624C640023115A /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E622B624C640023115A /* AppStepper.swift */; };
 		4BE00E662B624D550023115A /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E652B624D550023115A /* KeychainStorage.swift */; };
+		4BE00E6A2B62C0F50023115A /* ApplyerListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E692B62C0F50023115A /* ApplyerListResponse.swift */; };
+		4BE00E6E2B62C13A0023115A /* ApplyerListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E6D2B62C13A0023115A /* ApplyerListEntity.swift */; };
+		4BE00E702B6387E50023115A /* EditContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E6F2B6387E50023115A /* EditContentView.swift */; };
+		4BE00E722B63BAB30023115A /* ApplyerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E712B63BAB30023115A /* ApplyerListViewController.swift */; };
+		4BE00E752B63BC370023115A /* ApplyerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */; };
+		4BE00E782B63BF440023115A /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */; };
+		4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E792B6418020023115A /* BohomePlaceholderView.swift */; };
 		4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */; };
 		4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA32B5E4653009A8DC4 /* UserService.swift */; };
 		4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */; };
@@ -225,6 +232,13 @@
 		4BE00E602B616D3B0023115A /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		4BE00E622B624C640023115A /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4BE00E652B624D550023115A /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		4BE00E692B62C0F50023115A /* ApplyerListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListResponse.swift; sourceTree = "<group>"; };
+		4BE00E6D2B62C13A0023115A /* ApplyerListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListEntity.swift; sourceTree = "<group>"; };
+		4BE00E6F2B6387E50023115A /* EditContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentView.swift; sourceTree = "<group>"; };
+		4BE00E712B63BAB30023115A /* ApplyerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListViewController.swift; sourceTree = "<group>"; };
+		4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListViewModel.swift; sourceTree = "<group>"; };
+		4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
+		4BE00E792B6418020023115A /* BohomePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BohomePlaceholderView.swift; sourceTree = "<group>"; };
 		4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		4BFF7AA32B5E4653009A8DC4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
@@ -331,6 +345,7 @@
 		4B1181502B53A71C00B1C04D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4BE00E732B63BC1E0023115A /* ApplyList */,
 				4B8A4D692B5BFA58007F7A3F /* Toast */,
 				4B8A4D502B5A860B007F7A3F /* Post */,
 				4B8A4D412B5A3E47007F7A3F /* Profile */,
@@ -436,6 +451,7 @@
 				4B8A4D5E2B5A942F007F7A3F /* BoheomTextView.swift */,
 				4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */,
 				4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */,
+				4BE00E792B6418020023115A /* BohomePlaceholderView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -691,6 +707,7 @@
 			children = (
 				4BFF7AB52B5E9E6F009A8DC4 /* DatePicker */,
 				4BFF7AB42B5E9E61009A8DC4 /* Category */,
+				4BE00E6F2B6387E50023115A /* EditContentView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -743,6 +760,7 @@
 				4BE00E4D2B5F940A0023115A /* PostListResponse.swift */,
 				4BE00E482B5F8A7C0023115A /* PostDetailResponse.swift */,
 				4BE00E402B5F89290023115A /* PostResponse.swift */,
+				4BE00E692B62C0F50023115A /* ApplyerListResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -753,6 +771,7 @@
 				4BE00E4F2B5F94510023115A /* PostListEntity.swift */,
 				4BE00E4A2B5F8B630023115A /* PostDetailEntity.swift */,
 				4BE00E432B5F89D20023115A /* PostEntity.swift */,
+				4BE00E6D2B62C13A0023115A /* ApplyerListEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -787,6 +806,24 @@
 				4BE00E652B624D550023115A /* KeychainStorage.swift */,
 			);
 			path = Keychain;
+			sourceTree = "<group>";
+		};
+		4BE00E732B63BC1E0023115A /* ApplyList */ = {
+			isa = PBXGroup;
+			children = (
+				4BE00E762B63BF220023115A /* Component */,
+				4BE00E712B63BAB30023115A /* ApplyerListViewController.swift */,
+				4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */,
+			);
+			path = ApplyList;
+			sourceTree = "<group>";
+		};
+		4BE00E762B63BF220023115A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		4BFF7A9D2B5E44CD009A8DC4 /* UserService */ = {
@@ -1022,6 +1059,7 @@
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B8A4D432B5A3E80007F7A3F /* ProfileViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
+				4BE00E702B6387E50023115A /* EditContentView.swift in Sources */,
 				4B8A4D152B579C39007F7A3F /* AuthService.swift in Sources */,
 				4B8A4D382B58FABA007F7A3F /* PostCollectionViewCell.swift in Sources */,
 				4B8A4CEA2B5672AC007F7A3F /* SignupIDViewController.swift in Sources */,
@@ -1036,7 +1074,9 @@
 				4BE00E412B5F89290023115A /* PostResponse.swift in Sources */,
 				4B8A4D642B5AB8C8007F7A3F /* CategoryListViewCell.swift in Sources */,
 				4BE00E662B624D550023115A /* KeychainStorage.swift in Sources */,
+				4BE00E722B63BAB30023115A /* ApplyerListViewController.swift in Sources */,
 				4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */,
+				4BE00E782B63BF440023115A /* ApplyListTableViewCell.swift in Sources */,
 				4B8A4CCD2B54292C007F7A3F /* UILabel+boheomLabel.swift in Sources */,
 				4B8A4D402B591C9F007F7A3F /* IconLabel.swift in Sources */,
 				4B8A4CE02B54FBCB007F7A3F /* LoginDynamicHeader.swift in Sources */,
@@ -1056,10 +1096,12 @@
 				4B11813B2B53A5A500B1C04D /* SceneDelegate.swift in Sources */,
 				4B8A4CD72B54F7E4007F7A3F /* SignupNicknameViewController.swift in Sources */,
 				4B8A4D662B5AD69B007F7A3F /* CategoryCollectionLayout.swift in Sources */,
+				4BE00E752B63BC370023115A /* ApplyerListViewModel.swift in Sources */,
 				4B8A4D362B58E56F007F7A3F /* BoheomListHeader.swift in Sources */,
 				4B8A4CEE2B5672E9007F7A3F /* SignupCompleteViewController.swift in Sources */,
 				4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */,
 				4BE00E5E2B5FD1D70023115A /* DateFormatIndicated.swift in Sources */,
+				4BE00E6A2B62C0F50023115A /* ApplyerListResponse.swift in Sources */,
 				4BE00E582B5FC1240023115A /* HomeFloatingButton.swift in Sources */,
 				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
 				4BE00E442B5F89D20023115A /* PostEntity.swift in Sources */,
@@ -1069,6 +1111,7 @@
 				4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */,
 				4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */,
 				4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */,
+				4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */,
 				4B8A4D722B5CFEB7007F7A3F /* InfoChecker.swift in Sources */,
 				4B8A4D482B5A404B007F7A3F /* ProfileBackgroundView.swift in Sources */,
 				4B8A4D5A2B5A86C7007F7A3F /* PostWriteViewModel.swift in Sources */,
@@ -1097,6 +1140,7 @@
 				4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */,
 				4BE00E492B5F8A7C0023115A /* PostDetailResponse.swift in Sources */,
 				4B8A4D752B5D63C8007F7A3F /* SignupInfoStrage.swift in Sources */,
+				4BE00E6E2B62C13A0023115A /* ApplyerListEntity.swift in Sources */,
 				4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */,
 				4B8A4D3A2B58FF82007F7A3F /* UIView+setShadow.swift in Sources */,
 				4B8A4CFF2B56D921007F7A3F /* JWTPlugin.swift in Sources */,

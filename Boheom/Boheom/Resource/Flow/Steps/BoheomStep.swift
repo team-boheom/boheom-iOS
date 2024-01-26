@@ -2,7 +2,7 @@ import RxFlow
 
 public enum BoheomStep: Step {
     
-    //onBoarding
+    // onBoarding
     case onBoardingIsRequired
 
     // login
@@ -14,19 +14,23 @@ public enum BoheomStep: Step {
     case signupPassword
     case signupComplete
 
-    //home
+    // home
     case homeIsRequired
 
-    //profile
+    // profile
     case profileIsRequired
 
-    //post
+    // post
     case postDetailIsRequired(postID: String)
     case postWriteIsRequired
+    case applyerListIsRequired(postID: String)
 
-    //navigate
+    // navigate
     case navigateBackRequired
 
-    //toast
+    // launchScreen
+    case launchScreenIsRequired
+
+    // toast
     case presentToastRequired
 }

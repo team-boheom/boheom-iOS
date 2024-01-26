@@ -13,7 +13,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
-    private let contentView = UIView().then {
+    private let contentView = EditContentView().then {
         $0.backgroundColor = .white
     }
 
@@ -29,6 +29,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
     override func attribute() {
         view.backgroundColor = .white
         addChild(toastController)
+        keyboardNotification()
     }
 
     override func addView() {
@@ -108,5 +109,38 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
                 owner.toastController.presentToast(with: message, type: .error)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func keyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardControl(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardControl(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc func keyboardControl(_ sender: Notification) {
+        guard let userInfo = sender.userInfo else { return }
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else { return }
+        
+        if sender.name == UIResponder.keyboardWillShowNotification {
+            let moveTo = -keyboardFrame.height + view.safeAreaInsets.bottom + 10
+            scrollView.contentInset = .init(
+                top: 0,
+                left: 0,
+                bottom: keyboardFrame.height - view.safeAreaInsets.bottom,
+                right: 0
+            )
+        } else {
+            scrollView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
 }

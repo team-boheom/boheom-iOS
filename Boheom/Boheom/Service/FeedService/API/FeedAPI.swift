@@ -12,6 +12,7 @@ enum FeedAPI {
     case fetchPopularPost
     case fetchApplyPost
     case fetchMyPost
+    case fetchApplyerList(feedId: String)
 }
 
 extension FeedAPI: BoheomAPI {
@@ -39,6 +40,8 @@ extension FeedAPI: BoheomAPI {
             return "/applied"
         case .fetchMyPost:
             return "/mine"
+        case let .fetchApplyerList(feedId):
+            return "/apply-user/\(feedId)"
         }
     }
 
@@ -63,7 +66,7 @@ extension FeedAPI: BoheomAPI {
 
     var method: Moya.Method {
         switch self {
-        case .fetchPostDetail, .fetchRecentPost, .fetchPopularPost, .fetchApplyPost, .fetchMyPost:
+        case .fetchPostDetail, .fetchRecentPost, .fetchPopularPost, .fetchApplyPost, .fetchMyPost, .fetchApplyerList:
             return .get
         case .writePost, .applyPost:
             return .post

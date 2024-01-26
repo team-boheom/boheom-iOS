@@ -18,6 +18,8 @@ class PostDetailViewModel: ViewModelType, Stepper {
         let fetchDetailSignal: Observable<String>
         let applySignal: Observable<String>
         let cancelApplySignal: Observable<String>
+        let applyerListSignal: Observable<String>
+        let deleteSignal: Observable<String>
     }
 
     struct Output {
@@ -31,15 +33,32 @@ class PostDetailViewModel: ViewModelType, Stepper {
         let errorMessage = PublishRelay<String>()
         let successMessage = PublishRelay<String>()
 
+        input.applyerListSignal.asObservable()
+            .map { BoheomStep.applyerListIsRequired(postID: $0) }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+
         input.fetchDetailSignal
             .flatMap {
                 self.feedService.fetchPostDetail(feedId: $0)
                     .catch {
-                        print($0.localizedDescription)
+                        errorMessage.accept($0.localizedDescription)
                         return .never()
                     }
             }
             .bind(to: postDatailData)
+            .disposed(by: disposeBag)
+
+        input.deleteSignal
+            .flatMap {
+                self.feedService.deletePost(feedId: $0)
+                    .andThen(Single.just(BoheomStep.navigateBackRequired))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: steps)
             .disposed(by: disposeBag)
 
         input.applySignal

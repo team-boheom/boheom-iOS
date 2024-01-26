@@ -56,4 +56,10 @@ class FeedService: RestApiRemoteService<FeedAPI> {
             .map(PostListResponse.self)
             .map { $0.toDomain() }
     }
+
+    func fetchApplyerList(feedId: String) -> Single<ApplyerListEntity> {
+        self.request(.fetchApplyerList(feedId: feedId))
+            .map(ApplyerListResponse.self)
+            .map { $0.toDomain() }
+    }
 }
