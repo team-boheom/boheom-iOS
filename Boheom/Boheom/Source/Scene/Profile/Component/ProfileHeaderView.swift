@@ -73,4 +73,8 @@ extension ProfileHeaderView {
         nickNameLabel.text = nickName
         idLabel.text = id
     }
+
+    public func setProfileImageToUIIImage(image: UIImage?) {
+        profileImageView.image = image
+    }
 }

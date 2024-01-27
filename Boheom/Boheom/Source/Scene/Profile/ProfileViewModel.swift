@@ -30,6 +30,7 @@ class ProfileViewModel: ViewModelType, Stepper {
         let applySignal: Observable<String>
         let cancelApplySignal: Observable<String>
         let navigateDetailSignal: Observable<String>
+        let uploadImageSignal: Observable<Data>
     }
 
     struct Output {
@@ -88,6 +89,18 @@ class ProfileViewModel: ViewModelType, Stepper {
                 owner.applyPostList = data.posts
                 owner.applyPostData.accept(data)
             })
+            .disposed(by: disposeBag)
+
+        input.uploadImageSignal
+            .flatMap {
+                self.userService.uploadProfile(imageData: $0)
+                    .andThen(Single.just("프로필 이미지를 변경하였습니다."))
+                    .catch {
+                        errorMessage.accept($0.localizedDescription)
+                        return .never()
+                    }
+            }
+            .bind(to: successMessage)
             .disposed(by: disposeBag)
 
         input.applySignal

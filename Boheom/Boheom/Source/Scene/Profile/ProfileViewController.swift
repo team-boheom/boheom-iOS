@@ -3,6 +3,7 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import PhotosUI
 
 class ProfileViewController: BaseVC<ProfileViewModel> {
 
@@ -10,10 +11,19 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
     private let navigetToDetail = PublishRelay<String>()
     private let applyPost = PublishRelay<String>()
     private let cancelApplyPost = PublishRelay<String>()
+    private let uploadProfileImage = PublishRelay<Data>()
 
     private let toastController = ToastViewController()
+    private let photoPickerManager = ProfileImagePickerManager()
 
     private lazy var backButton = BoheomBackButton(self.navigationController)
+    private let editProfileButton = UIButton(type: .system).then {
+        $0.backgroundColor = .white
+        $0.setImage(.pencil, for: .normal)
+        $0.tintColor = .gray700
+        $0.layer.cornerRadius = 15
+        $0.setShadow()
+    }
 
     private let scrollView = UIScrollView().then {
         $0.backgroundColor = .clear
@@ -84,6 +94,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             backgroundView,
             scrollView,
             backButton,
+            editProfileButton,
             toastController.view
         )
     }
@@ -92,6 +103,11 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.leading.equalToSuperview().inset(16)
+        }
+        editProfileButton.snp.makeConstraints {
+            $0.width.height.equalTo(30)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.trailing.equalToSuperview().inset(16)
         }
         backgroundView.snp.makeConstraints {
             $0.top.width.equalToSuperview()
@@ -140,9 +156,14 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             fetchProfileSignal: fetchProfile.asObservable(),
             applySignal: applyPost.asObservable(),
             cancelApplySignal: cancelApplyPost.asObservable(),
-            navigateDetailSignal: navigetToDetail.asObservable()
+            navigateDetailSignal: navigetToDetail.asObservable(),
+            uploadImageSignal: uploadProfileImage.asObservable()
         )
         let output = viewModel.transform(input: input)
+
+        editProfileButton.rx.tap
+            .bind(onNext: presentPhotoPicker)
+            .disposed(by: disposeBag)
 
         output.myPostData.asObservable()
             .map { $0.posts }
@@ -203,6 +224,30 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 owner.toastController.presentToast(with: message, type: .succees)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension ProfileViewController {
+    private func presentPhotoPicker() {
+        let photoPicker = photoPickerManager.makeImagePicker()
+        photoPicker.delegate = self
+        present(photoPicker, animated: true)
+    }
+}
+
+extension ProfileViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+
+        photoPickerManager.setSelectImage(item: results.map(\.itemProvider).first)
+
+        Task {
+            let image = await photoPickerManager.toUIImage()
+            headerView.setProfileImageToUIIImage(image: image)
+
+            guard let data = await photoPickerManager.toData() else { return }
+            uploadProfileImage.accept(data)
+        }
     }
 }
 

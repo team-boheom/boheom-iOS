@@ -123,6 +123,7 @@
 		4BE00E752B63BC370023115A /* ApplyerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */; };
 		4BE00E782B63BF440023115A /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */; };
 		4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E792B6418020023115A /* BohomePlaceholderView.swift */; };
+		4BE00E7C2B64E4330023115A /* ProfileImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */; };
 		4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */; };
 		4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA32B5E4653009A8DC4 /* UserService.swift */; };
 		4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */; };
@@ -239,6 +240,7 @@
 		4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListViewModel.swift; sourceTree = "<group>"; };
 		4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
 		4BE00E792B6418020023115A /* BohomePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BohomePlaceholderView.swift; sourceTree = "<group>"; };
+		4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerManager.swift; sourceTree = "<group>"; };
 		4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		4BFF7AA32B5E4653009A8DC4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 			children = (
 				4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */,
 				4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */,
+				4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				4B8A4D5F2B5A942F007F7A3F /* BoheomTextView.swift in Sources */,
 				4B8A4D622B5AA2E6007F7A3F /* CategoryInputTextField.swift in Sources */,
 				4B8A4CC02B541E03007F7A3F /* AppFlow.swift in Sources */,
+				4BE00E7C2B64E4330023115A /* ProfileImagePickerManager.swift in Sources */,
 				4B8A4CBE2B541C39007F7A3F /* OnBoardingViewController.swift in Sources */,
 				4B8A4D432B5A3E80007F7A3F /* ProfileViewController.swift in Sources */,
 				4B1181392B53A5A500B1C04D /* AppDelegate.swift in Sources */,
