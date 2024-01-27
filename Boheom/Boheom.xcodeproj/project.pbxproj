@@ -122,7 +122,7 @@
 		4BE00E722B63BAB30023115A /* ApplyerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E712B63BAB30023115A /* ApplyerListViewController.swift */; };
 		4BE00E752B63BC370023115A /* ApplyerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */; };
 		4BE00E782B63BF440023115A /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */; };
-		4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E792B6418020023115A /* BohomePlaceholderView.swift */; };
+		4BE00E7A2B6418020023115A /* BoheomPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E792B6418020023115A /* BoheomPlaceholderView.swift */; };
 		4BE00E7C2B64E4330023115A /* ProfileImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */; };
 		4BE00E7F2B64FC650023115A /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E7E2B64FC650023115A /* PostEditViewController.swift */; };
 		4BE00E812B64FC740023115A /* PostEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E802B64FC740023115A /* PostEditViewModel.swift */; };
@@ -241,7 +241,7 @@
 		4BE00E712B63BAB30023115A /* ApplyerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListViewController.swift; sourceTree = "<group>"; };
 		4BE00E742B63BC370023115A /* ApplyerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyerListViewModel.swift; sourceTree = "<group>"; };
 		4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
-		4BE00E792B6418020023115A /* BohomePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BohomePlaceholderView.swift; sourceTree = "<group>"; };
+		4BE00E792B6418020023115A /* BoheomPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomPlaceholderView.swift; sourceTree = "<group>"; };
 		4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerManager.swift; sourceTree = "<group>"; };
 		4BE00E7E2B64FC650023115A /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
 		4BE00E802B64FC740023115A /* PostEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewModel.swift; sourceTree = "<group>"; };
@@ -457,7 +457,7 @@
 				4B8A4D5E2B5A942F007F7A3F /* BoheomTextView.swift */,
 				4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */,
 				4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */,
-				4BE00E792B6418020023115A /* BohomePlaceholderView.swift */,
+				4BE00E792B6418020023115A /* BoheomPlaceholderView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1122,7 +1122,7 @@
 				4B8A4CFD2B56D6A5007F7A3F /* JWTTokenType.swift in Sources */,
 				4B8A4CF72B56D029007F7A3F /* AuthAPI.swift in Sources */,
 				4B8A4D1E2B579E9D007F7A3F /* LoginUserInfoRequest.swift in Sources */,
-				4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */,
+				4BE00E7A2B6418020023115A /* BoheomPlaceholderView.swift in Sources */,
 				4B8A4D722B5CFEB7007F7A3F /* InfoChecker.swift in Sources */,
 				4B8A4D482B5A404B007F7A3F /* ProfileBackgroundView.swift in Sources */,
 				4B8A4D5A2B5A86C7007F7A3F /* PostWriteViewModel.swift in Sources */,

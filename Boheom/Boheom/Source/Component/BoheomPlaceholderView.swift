@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-class BohomePlaceholderView: UIView {
+class BoheomPlaceholderView: UIView {
     private let iconImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
@@ -45,7 +45,6 @@ class BohomePlaceholderView: UIView {
         }
         self.snp.makeConstraints {
             $0.bottom.equalTo(subTitleLabel)
-            $0.width.equalTo(205)
         }
     }
 }

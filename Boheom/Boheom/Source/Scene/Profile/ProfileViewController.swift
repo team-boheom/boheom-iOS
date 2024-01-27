@@ -26,6 +26,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
     }
 
     private let scrollView = UIScrollView().then {
+        $0.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
     }
@@ -54,6 +55,13 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
         $0.setShadow()
     }
+    private let myPostPlaceholder = BoheomPlaceholderView(
+        title: "이런, 아무런 모집글도 작성하지 않았어요!",
+        subTitle: "모집글을 작성하여 원하는 사람들을 모아보세요.",
+        icon: .faceWithPeekingEye
+    ).then {
+        $0.isHidden = true
+    }
 
     private let myApplyPostHeaderView = BoheomListHeader(title: "내가 신청한 모집글 🎮", isShowNavigate: false)
     private lazy var myApplyflowLayout = UICollectionViewFlowLayout().then {
@@ -69,6 +77,13 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         $0.clipsToBounds = false
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
         $0.setShadow()
+    }
+    private let myApplyPostPlaceholder = BoheomPlaceholderView(
+        title: "신청한 모집글이 없는것 같네요..!",
+        subTitle: "빨리 원하는 모집글을 찾아 신청해보세요.",
+        icon: .faceWithOpenEyesAndHandOverMouth
+    ).then {
+        $0.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +101,9 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             myPostHeaderView,
             myPostCollectionView,
             myApplyPostHeaderView,
-            myApplyPostCollectionView
+            myApplyPostCollectionView,
+            myPostPlaceholder,
+            myApplyPostPlaceholder
         )
         scrollContentView.addSubview(contentView)
         scrollView.addSubview(scrollContentView)
@@ -118,7 +135,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         }
         scrollContentView.snp.makeConstraints {
             $0.top.width.equalToSuperview()
-            $0.bottom.greaterThanOrEqualTo(myApplyPostCollectionView).offset(30)
+            $0.bottom.greaterThanOrEqualTo(myApplyPostCollectionView)
             $0.bottom.equalToSuperview()
         }
         contentView.snp.makeConstraints {
@@ -140,7 +157,12 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             $0.top.equalTo(myPostHeaderView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview()
         }
+        myPostPlaceholder.snp.makeConstraints {
+            $0.top.equalTo(myPostHeaderView.snp.bottom).offset(14)
+            $0.centerX.equalToSuperview()
+        }
         myApplyPostHeaderView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(myPostCollectionView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
@@ -148,6 +170,11 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             $0.top.equalTo(myApplyPostHeaderView.snp.bottom).offset(10)
             $0.height.equalTo(168)
             $0.leading.trailing.equalToSuperview()
+        }
+        myApplyPostPlaceholder.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(myApplyPostHeaderView.snp.bottom).offset(14)
+            $0.centerX.equalToSuperview()
         }
     }
 
@@ -176,6 +203,11 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             }
             .disposed(by: disposeBag)
 
+        output.myPostData.asObservable()
+            .map { !$0.posts.isEmpty }
+            .bind(to: myPostPlaceholder.rx.isHidden)
+            .disposed(by: disposeBag)
+
         output.applyPostData.asObservable()
             .map { $0.posts }
             .bind(to: myApplyPostCollectionView.rx.items(
@@ -185,6 +217,11 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 cell.setup(with: element)
                 cell.cellDelegate = self
             }
+            .disposed(by: disposeBag)
+
+        output.applyPostData.asObservable()
+            .map { !$0.posts.isEmpty }
+            .bind(to: myApplyPostPlaceholder.rx.isHidden)
             .disposed(by: disposeBag)
 
         myPostCollectionView.rx.itemSelected

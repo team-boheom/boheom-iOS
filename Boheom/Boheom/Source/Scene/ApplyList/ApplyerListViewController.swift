@@ -16,7 +16,7 @@ class ApplyerListViewController: BaseVC<ApplyerListViewModel> {
     private let subHeaderLabel = UILabel().then {
         $0.boheomLabel(text: "어떤 신청자가 있는지 확인해보세요!", font: .captionC1Medium, textColor: .gray600)
     }
-    private let placeholderView = BohomePlaceholderView(
+    private let placeholderView = BoheomPlaceholderView(
         title: "신청한 사람이 보이지 않아요..!",
         subTitle: "지금 빨리 신청하여 첫 신청자가 되어보세요.",
         icon: .thinkingFace
@@ -69,6 +69,7 @@ class ApplyerListViewController: BaseVC<ApplyerListViewModel> {
             $0.leading.bottom.trailing.equalToSuperview()
         }
         placeholderView.snp.makeConstraints {
+            $0.width.equalTo(205)
             $0.top.equalTo(subHeaderLabel.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
