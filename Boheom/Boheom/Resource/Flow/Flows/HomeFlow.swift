@@ -30,6 +30,8 @@ class HomeFlow: Flow {
             return navigateToBack()
         case .applyerListIsRequired(let postID):
             return presentToApplyerListScreen(postID: postID)
+        case .postEditIsRequired(let postID, let originData):
+            return presentToEditPostScreen(postID: postID, originData: originData)
         default:
             return .none
         }
@@ -84,6 +86,18 @@ class HomeFlow: Flow {
         return .one(flowContributor: .contribute(
             withNextPresentable: applyerListVC,
             withNextStepper: applyerListVC.viewModel
+        ))
+    }
+
+    private func presentToEditPostScreen(postID: String, originData: PostDetailEntity?) -> FlowContributors {
+        let editPostVC = container.resolve(PostEditViewController.self)!
+        editPostVC.viewModel.postID = postID
+        editPostVC.setEditData(originData: originData)
+
+        self.rootPresentable.pushViewController(editPostVC, animated: true)
+        return .one(flowContributor: .contribute(
+            withNextPresentable: editPostVC,
+            withNextStepper: editPostVC.viewModel
         ))
     }
 

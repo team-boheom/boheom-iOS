@@ -1,8 +1,12 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 public class BoheomTextView: UIView {
+
+    private let disposeBag: DisposeBag = .init()
     private let titleLabel = UILabel().then {
         $0.boheomLabel(font: .bodyB2Regular, textColor: .gray500)
     }
@@ -27,7 +31,7 @@ public class BoheomTextView: UIView {
         titleLabel.text = title
         placeHolderLabel.text = placeholder
         inputTextView.showsVerticalScrollIndicator = false
-        inputTextView.delegate = self
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -61,10 +65,11 @@ public class BoheomTextView: UIView {
             $0.bottom.equalTo(inputTextView)
         }
     }
-}
 
-extension BoheomTextView: UITextViewDelegate {
-    public func textViewDidChange(_ textView: UITextView) {
-        placeHolderLabel.isHidden = !textView.text.isEmpty
+    private func bind() {
+        inputTextView.rx.text.orEmpty
+            .map { !$0.isEmpty }
+            .bind(to: placeHolderLabel.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 }

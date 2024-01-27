@@ -6,9 +6,8 @@ import RxCocoa
 
 class BoheomDatePicker: UITextField {
 
-    public let selectDate = BehaviorRelay<String?>(value: nil)
+    public let selectDate = BehaviorRelay<String?>(value: Date().toString("yyyy-MM-dd"))
 
-    private let dateFormatter = DateFormatter()
     private let disposeBag: DisposeBag = .init()
     private let datePicker = UIDatePicker().then {
         $0.datePickerMode = .date
@@ -29,15 +28,14 @@ class BoheomDatePicker: UITextField {
 
 extension BoheomDatePicker {
     private func bind() {
+        selectDate
+            .bind(to: self.rx.text)
+            .disposed(by: disposeBag)
+
         datePicker.rx.value
-            .map {
-                self.dateFormatter.dateFormat = "yyyy-MM-dd"
-                return self.dateFormatter.string(from: $0)
-            }
-            .bind(with: self, onNext: { owner, date in
-                self.text = date
-                owner.selectDate.accept(date)
-            })
+            .skip(1)
+            .map { $0.toString("yyyy-MM-dd") }
+            .bind(to: selectDate)
             .disposed(by: disposeBag)
     }
 

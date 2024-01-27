@@ -23,6 +23,7 @@ public enum BoheomStep: Step {
     // post
     case postDetailIsRequired(postID: String)
     case postWriteIsRequired
+    case postEditIsRequired(postID: String, originData: PostDetailEntity?)
     case applyerListIsRequired(postID: String)
 
     // navigate

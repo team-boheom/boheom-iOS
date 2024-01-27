@@ -4,7 +4,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class PostWriteViewController: BaseVC<PostWriteViewModel> {
+class PostEditViewController: BaseVC<PostEditViewModel> {
 
     private lazy var backButton = BoheomBackButton(navigationController)
 
@@ -16,14 +16,14 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
         $0.backgroundColor = .white
     }
 
-    private let headerView = SubContentHeader(headerText: "모집글 작성", subContentText: "보드게임 같이 할 사람을 모아보세요!")
+    private let headerView = SubContentHeader(headerText: "모집글 수정", subContentText: "잘못된 부분을 수정해보세요.")
 
     private let titleTextField = BoheomTextField(title: "제목", placeholder: "제목을 입력하세요.")
     private let contentTextView = BoheomTextView(title: "내용", placeholder: "내용을 입력하세요.")
     private let maxPlayerTextField = BoheomTextField(title: "모집 인원", placeholder: "최대 모집 인원 수를 입력하세요.", keyboardType: .asciiCapableNumberPad)
     private let recruitmentDatePicker = PostDatePickerView(title: "모집일")
     private let categoryTextField = CategoryInputTextField()
-    private let writeButton = BoheomButton(text: "작성", type: .fill)
+    private let editButton = BoheomButton(text: "수정", type: .fill)
 
     override func attribute() {
         view.backgroundColor = .white
@@ -41,12 +41,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
             categoryTextField
         )
         scrollView.addSubview(contentView)
-        view.addSubviews(
-            scrollView,
-            backButton,
-            writeButton,
-            toastController.view
-        )
+        view.addSubviews(scrollView, backButton, editButton, toastController.view)
     }
 
     override func layout() {
@@ -85,7 +80,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
             $0.top.equalTo(recruitmentDatePicker.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
-        writeButton.snp.makeConstraints {
+        editButton.snp.makeConstraints {
             $0.height.equalTo(44)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
@@ -93,19 +88,19 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
     }
 
     override func bind() {
-        let input = PostWriteViewModel.Input(
+        let input = PostEditViewModel.Input(
             titleTextSignal: titleTextField.textField.rx.text.orEmpty.asObservable(),
             contentTextSignal: contentTextView.inputTextView.rx.text.orEmpty.asObservable(),
             recruitmentTextSignal: maxPlayerTextField.textField.rx.text.orEmpty.asObservable(),
             startDayTextSignal: recruitmentDatePicker.startInputDatePicker.selectDate.asObservable(),
             endDayTextSignal: recruitmentDatePicker.endInputDatePicker.selectDate.asObservable(),
             tagListSignal: categoryTextField.categoryList.asObservable(),
-            writeButtonSignal: writeButton.rx.tap.asObservable()
+            editButtonSignal: editButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
 
         output.writeButtonDisable.asObservable()
-            .bind(to: writeButton.rx.isDisable)
+            .bind(to: editButton.rx.isDisable)
             .disposed(by: disposeBag)
 
         output.errorMessage.asObservable()
@@ -145,5 +140,23 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
         } else {
             scrollView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         }
+    }
+}
+
+extension PostEditViewController {
+    public func setEditData(originData: PostDetailEntity?) {
+        guard let data = originData else { return }
+        Observable.just(data.title)
+            .bind(to: titleTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        Observable.just(data.content)
+            .bind(to: contentTextView.inputTextView.rx.text)
+            .disposed(by: disposeBag)
+        Observable.just("\(data.recruitment)")
+            .bind(to: maxPlayerTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        recruitmentDatePicker.startInputDatePicker.selectDate.accept(data.startDay)
+        recruitmentDatePicker.endInputDatePicker.selectDate.accept(data.endDay)
+        categoryTextField.categoryList.accept(data.tags)
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 
-struct PostDetailEntity {
-    let id, title, content, username, createdAt: String
+public struct PostDetailEntity {
+    let id, title, content, username, startDay, endDay, createdAt: String
     let tags: [String]
     let view, recruitment, applyCount: Int
     let isMine, isApplied: Bool

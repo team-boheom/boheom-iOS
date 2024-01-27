@@ -6,6 +6,8 @@ struct PostDetailResponse: Decodable {
         case title
         case content
         case username
+        case startDay = "start_day"
+        case endDay = "end_day"
         case createdAt = "created_at"
         case tags
         case view
@@ -15,7 +17,7 @@ struct PostDetailResponse: Decodable {
         case isMine = "is_mine"
     }
 
-    let id, title, content, username, createdAt: String
+    let id, title, content, username, startDay, endDay, createdAt: String
     let tags: [String]
     let view, recruitment, applyCount: Int
     let isMine, isApplied: Bool
@@ -28,6 +30,8 @@ extension PostDetailResponse {
             title: title,
             content: content,
             username: username,
+            startDay: startDay,
+            endDay: endDay,
             createdAt: createdAt.toDate(.fullDateAndTime).toString("yyyy년 M월 d일"),
             tags: tags,
             view: view,

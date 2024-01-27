@@ -3,12 +3,13 @@ import RxFlow
 import RxSwift
 import RxCocoa
 
-class PostWriteViewModel: ViewModelType, Stepper {
+class PostEditViewModel: ViewModelType, Stepper {
 
     var steps: PublishRelay<Step> = .init()
     var disposeBag: DisposeBag = .init()
 
     private let feedService: FeedService
+    var postID: String = ""
 
     init(feedService: FeedService) {
         self.feedService = feedService
@@ -21,7 +22,7 @@ class PostWriteViewModel: ViewModelType, Stepper {
         let startDayTextSignal: Observable<String?>
         let endDayTextSignal: Observable<String?>
         let tagListSignal: Observable<[String]>
-        let writeButtonSignal: Observable<Void>
+        let editButtonSignal: Observable<Void>
     }
 
     struct Output {
@@ -70,10 +71,10 @@ class PostWriteViewModel: ViewModelType, Stepper {
             .bind(to: writeButtonDisable)
             .disposed(by: disposeBag)
 
-        input.writeButtonSignal
+        input.editButtonSignal
             .compactMap { postRequestData }
             .flatMap {
-                self.feedService.writePost(request: $0)
+                self.feedService.editPost(feedId: self.postID, request: $0)
                     .andThen(Single.just(BoheomStep.navigateBackRequired))
                     .catch {
                         errorMessage.accept($0.localizedDescription)

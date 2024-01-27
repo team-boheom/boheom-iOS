@@ -124,6 +124,8 @@
 		4BE00E782B63BF440023115A /* ApplyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */; };
 		4BE00E7A2B6418020023115A /* BohomePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E792B6418020023115A /* BohomePlaceholderView.swift */; };
 		4BE00E7C2B64E4330023115A /* ProfileImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */; };
+		4BE00E7F2B64FC650023115A /* PostEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E7E2B64FC650023115A /* PostEditViewController.swift */; };
+		4BE00E812B64FC740023115A /* PostEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE00E802B64FC740023115A /* PostEditViewModel.swift */; };
 		4BFF7AA02B5E450B009A8DC4 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */; };
 		4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA32B5E4653009A8DC4 /* UserService.swift */; };
 		4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */; };
@@ -241,6 +243,8 @@
 		4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyListTableViewCell.swift; sourceTree = "<group>"; };
 		4BE00E792B6418020023115A /* BohomePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BohomePlaceholderView.swift; sourceTree = "<group>"; };
 		4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerManager.swift; sourceTree = "<group>"; };
+		4BE00E7E2B64FC650023115A /* PostEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewController.swift; sourceTree = "<group>"; };
+		4BE00E802B64FC740023115A /* PostEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditViewModel.swift; sourceTree = "<group>"; };
 		4BFF7A9F2B5E450B009A8DC4 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		4BFF7AA32B5E4653009A8DC4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BFF7AA62B5E5E2D009A8DC4 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
@@ -671,8 +675,10 @@
 		4B8A4D502B5A860B007F7A3F /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				4B8A4D602B5AA2B1007F7A3F /* Component */,
 				4B8A4D512B5A8614007F7A3F /* PostDetail */,
 				4B8A4D562B5A8695007F7A3F /* PostWrite */,
+				4BE00E7D2B64FBDB0023115A /* PostEdit */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -680,7 +686,6 @@
 		4B8A4D512B5A8614007F7A3F /* PostDetail */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4D5B2B5A876F007F7A3F /* Component */,
 				4B8A4D522B5A862D007F7A3F /* PostDetailViewController.swift */,
 				4B8A4D542B5A8673007F7A3F /* PostDetailViewModel.swift */,
 			);
@@ -690,27 +695,19 @@
 		4B8A4D562B5A8695007F7A3F /* PostWrite */ = {
 			isa = PBXGroup;
 			children = (
-				4B8A4D602B5AA2B1007F7A3F /* Component */,
 				4B8A4D572B5A86BC007F7A3F /* PostWriteViewController.swift */,
 				4B8A4D592B5A86C7007F7A3F /* PostWriteViewModel.swift */,
 			);
 			path = PostWrite;
 			sourceTree = "<group>";
 		};
-		4B8A4D5B2B5A876F007F7A3F /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
 		4B8A4D602B5AA2B1007F7A3F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4BE00E6F2B6387E50023115A /* EditContentView.swift */,
+				4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */,
 				4BFF7AB52B5E9E6F009A8DC4 /* DatePicker */,
 				4BFF7AB42B5E9E61009A8DC4 /* Category */,
-				4BE00E6F2B6387E50023115A /* EditContentView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -827,6 +824,15 @@
 				4BE00E772B63BF440023115A /* ApplyListTableViewCell.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		4BE00E7D2B64FBDB0023115A /* PostEdit */ = {
+			isa = PBXGroup;
+			children = (
+				4BE00E7E2B64FC650023115A /* PostEditViewController.swift */,
+				4BE00E802B64FC740023115A /* PostEditViewModel.swift */,
+			);
+			path = PostEdit;
 			sourceTree = "<group>";
 		};
 		4BFF7A9D2B5E44CD009A8DC4 /* UserService */ = {
@@ -1076,6 +1082,7 @@
 				4B8A4D2D2B58D937007F7A3F /* HomeViewController.swift in Sources */,
 				4B8A4D682B5BE91E007F7A3F /* SignupUserInfoRequest.swift in Sources */,
 				4BE00E412B5F89290023115A /* PostResponse.swift in Sources */,
+				4BE00E7F2B64FC650023115A /* PostEditViewController.swift in Sources */,
 				4B8A4D642B5AB8C8007F7A3F /* CategoryListViewCell.swift in Sources */,
 				4BE00E662B624D550023115A /* KeychainStorage.swift in Sources */,
 				4BE00E722B63BAB30023115A /* ApplyerListViewController.swift in Sources */,
@@ -1134,6 +1141,7 @@
 				4BE00E612B616D3B0023115A /* ServiceError.swift in Sources */,
 				4BFF7AAD2B5E5FFC009A8DC4 /* UserServiceError.swift in Sources */,
 				4BE00E5C2B5FD1930023115A /* String+toDate.swift in Sources */,
+				4BE00E812B64FC740023115A /* PostEditViewModel.swift in Sources */,
 				4B8A4D5D2B5A8786007F7A3F /* PostDetailHeaderView.swift in Sources */,
 				4BE00E632B624C640023115A /* AppStepper.swift in Sources */,
 				4B8A4CDB2B54F850007F7A3F /* LoginViewController.swift in Sources */,

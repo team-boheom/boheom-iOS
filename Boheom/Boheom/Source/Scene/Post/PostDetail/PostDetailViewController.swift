@@ -13,10 +13,18 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
     private let cancelApplyPost = PublishRelay<String>()
     private let applyerList = PublishRelay<String>()
     private let deletePost = PublishRelay<String>()
+    private let editPost = PublishRelay<String>()
 
     private let toastController = ToastViewController()
 
     private lazy var backButton = BoheomBackButton(navigationController)
+    private let editPostButton = UIButton(type: .system).then {
+        $0.backgroundColor = .white
+        $0.setImage(.pencil, for: .normal)
+        $0.tintColor = .gray700
+        $0.layer.cornerRadius = 15
+        $0.setShadow()
+    }
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
         $0.contentInset = .init(top: 0, left: 0, bottom: 30, right: 0)
@@ -58,13 +66,23 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
             deleteButton
         )
         scrollView.addSubview(contentView)
-        view.addSubviews(scrollView, backButton, toastController.view)
+        view.addSubviews(
+            scrollView,
+            backButton,
+            editPostButton,
+            toastController.view
+        )
     }
 
     override func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.leading.equalToSuperview().inset(16)
+        }
+        editPostButton.snp.makeConstraints {
+            $0.width.height.equalTo(30)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.trailing.equalToSuperview().inset(16)
         }
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -114,7 +132,8 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
             applySignal: applyPost.asObservable(),
             cancelApplySignal: cancelApplyPost.asObservable(),
             applyerListSignal: applyerList.asObservable(),
-            deleteSignal: deletePost.asObservable()
+            deleteSignal: deletePost.asObservable(),
+            editSignal: editPost.asObservable()
         )
         let output = viewModel.transform(input: input)
 
@@ -138,6 +157,11 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
             .bind(to: deletePost)
             .disposed(by: disposeBag)
 
+        editPostButton.rx.tap
+            .map { self.postID }
+            .bind(to: editPost)
+            .disposed(by: disposeBag)
+
         output.postDatailData.asObservable()
             .subscribe(with: self, onNext: { owner, data in
                 owner.headerView.setup(with: data)
@@ -146,6 +170,7 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
                 owner.applyCancelButton.isHidden = !data.isApplied
                 owner.applyButton.isHidden = data.isMine
                 owner.deleteButton.isHidden = !data.isMine
+                owner.editPostButton.isHidden = !data.isMine
                 owner.isApplied = data.isApplied
             })
             .disposed(by: disposeBag)

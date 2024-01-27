@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProfileEntity {
+public struct ProfileEntity {
     let nickname: String
     let accountId: String
     let profile: URL?

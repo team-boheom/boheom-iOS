@@ -1,5 +1,5 @@
 import Foundation
 
-struct PostListEntity {
+public struct PostListEntity {
     let posts: [PostEntity]
 }

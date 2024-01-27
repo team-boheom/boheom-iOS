@@ -41,6 +41,9 @@ public extension Container {
         self.register(PostWriteViewModel.self) { resolver in
             PostWriteViewModel(feedService: resolver.resolve(FeedService.self)!)
         }
+        self.register(PostEditViewModel.self) { resolver in
+            PostEditViewModel(feedService: resolver.resolve(FeedService.self)!)
+        }
         self.register(ApplyerListViewModel.self) { resolver in
             ApplyerListViewModel(feedService: resolver.resolve(FeedService.self)!)
         }
@@ -76,6 +79,9 @@ public extension Container {
         }
         self.register(PostWriteViewController.self) { resolver in
             PostWriteViewController(viewModel: resolver.resolve(PostWriteViewModel.self)!)
+        }
+        self.register(PostEditViewController.self) { resolver in
+            PostEditViewController(viewModel: resolver.resolve(PostEditViewModel.self)!)
         }
         self.register(ApplyerListViewController.self) { resolver in
             ApplyerListViewController(viewModel: resolver.resolve(ApplyerListViewModel.self)!)

@@ -9,6 +9,7 @@ class PostDetailViewModel: ViewModelType, Stepper {
     var disposeBag: DisposeBag = .init()
 
     private let feedService: FeedService
+    private var originData: PostDetailEntity?
 
     init(feedService: FeedService) {
         self.feedService = feedService
@@ -20,6 +21,7 @@ class PostDetailViewModel: ViewModelType, Stepper {
         let cancelApplySignal: Observable<String>
         let applyerListSignal: Observable<String>
         let deleteSignal: Observable<String>
+        let editSignal: Observable<String>
     }
 
     struct Output {
@@ -33,7 +35,12 @@ class PostDetailViewModel: ViewModelType, Stepper {
         let errorMessage = PublishRelay<String>()
         let successMessage = PublishRelay<String>()
 
-        input.applyerListSignal.asObservable()
+        input.editSignal
+            .map { BoheomStep.postEditIsRequired(postID: $0, originData: self.originData) }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+
+        input.applyerListSignal
             .map { BoheomStep.applyerListIsRequired(postID: $0) }
             .bind(to: steps)
             .disposed(by: disposeBag)
@@ -46,7 +53,10 @@ class PostDetailViewModel: ViewModelType, Stepper {
                         return .never()
                     }
             }
-            .bind(to: postDatailData)
+            .bind(with: self, onNext: { owner, data in
+                postDatailData.accept(data)
+                owner.originData = data
+            })
             .disposed(by: disposeBag)
 
         input.deleteSignal

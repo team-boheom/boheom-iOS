@@ -1,5 +1,5 @@
 import Foundation
 
-struct ApplyerListEntity {
+public struct ApplyerListEntity {
     let users: [ProfileEntity]
 }
