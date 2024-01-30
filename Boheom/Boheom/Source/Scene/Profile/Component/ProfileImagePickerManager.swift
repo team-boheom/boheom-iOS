@@ -28,7 +28,6 @@ class ProfileImagePickerManager {
                 continuation.resume(returning: image as? UIImage)
             }
         }
-
         return resultImage
     }
 

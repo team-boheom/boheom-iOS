@@ -40,6 +40,8 @@ class CategoryInputTextField: BoheomTextField {
     }
 
     private func bind() {
+        let categoryData = Observable.combineLatest(categoryList, textField.rx.text.orEmpty.asObservable())
+
         categoryListView.rx.setDelegate(self)
             .disposed(by: disposeBag)
 
@@ -49,6 +51,11 @@ class CategoryInputTextField: BoheomTextField {
                 appendValue.remove(at: index.item)
                 owner.categoryList.accept(appendValue)
             })
+            .disposed(by: disposeBag)
+
+        categoryData
+            .map { $0.0.count < 4 && !$0.1.isEmpty && $0.1.count <= 6 }
+            .bind(to: appendCategoryButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
         categoryList
@@ -62,11 +69,9 @@ class CategoryInputTextField: BoheomTextField {
             }
             .disposed(by: disposeBag)
 
-        appendCategoryButton.rx.tap.compactMap { self.textField.text }
-            .filter { !$0.isEmpty }
+        appendCategoryButton.rx.tap
             .bind(with: self, onNext: { owner, str in
                 owner.textField.text = ""
-                guard str.count <= 6 && owner.categoryList.value.count < 4 else { return }
                 var appendValue = owner.categoryList.value
                 appendValue.append("#\(str)")
                 owner.categoryList.accept(appendValue)
