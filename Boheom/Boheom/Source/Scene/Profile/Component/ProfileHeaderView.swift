@@ -75,6 +75,7 @@ extension ProfileHeaderView {
     }
 
     public func setProfileImageToUIIImage(image: UIImage?) {
+        guard image != nil else { return }
         profileImageView.image = image
     }
 }

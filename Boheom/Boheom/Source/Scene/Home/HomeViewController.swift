@@ -32,7 +32,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
         $0.clipsToBounds = true
     }
 
-    private let recentPostHeader = BoheomListHeader(title: "최근 모집글 ⏰")
+    private let recentPostHeader = BoheomListHeader(title: "최근 모집글 ⏰", isShowNavigate: false)
     private lazy var recentPostflowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.itemSize = .init(width: view.frame.width / 1.3, height: 168)
@@ -48,7 +48,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
         $0.setShadow()
     }
 
-    private let popularPostHeader = BoheomListHeader(title: "인기 모집글 🥳")
+    private let popularPostHeader = BoheomListHeader(title: "인기 모집글 🥳", isShowNavigate: false)
     private lazy var popularPostflowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .vertical
         $0.itemSize = .init(width: view.frame.width - 32, height: 168)

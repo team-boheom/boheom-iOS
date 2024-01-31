@@ -275,7 +275,6 @@ extension ProfileViewController {
 extension ProfileViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
-
         photoPickerManager.setSelectImage(item: results.map(\.itemProvider).first)
 
         Task {
