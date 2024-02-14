@@ -6,7 +6,6 @@ import RxCocoa
 
 class SignupPasswordViewController: BaseVC<SignupViewModel> {
 
-    private let toastController = ToastViewController()
     private let headerView = SubContentHeader(
         headerText: "비밀번호는 무엇인가요?",
         subContentText: "이제 마지막 입니다. 비밀번호를 알려주세요!"
@@ -24,7 +23,6 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
-        addChild(toastController)
     }
 
     override func bind() {
@@ -47,7 +45,9 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
 
         output.errorMessage.asObservable()
             .bind(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }
@@ -58,8 +58,7 @@ class SignupPasswordViewController: BaseVC<SignupViewModel> {
             inputTextField,
             inputCheckTextField,
             backButton,
-            nextButton,
-            toastController.view
+            nextButton
         )
     }
 

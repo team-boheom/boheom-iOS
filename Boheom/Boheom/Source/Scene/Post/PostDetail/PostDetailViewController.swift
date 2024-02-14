@@ -3,6 +3,7 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Toasty
 
 class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
@@ -14,8 +15,6 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
     private let applyerList = PublishRelay<String>()
     private let deletePost = PublishRelay<String>()
     private let editPost = PublishRelay<String>()
-
-    private let toastController = ToastViewController()
 
     private lazy var backButton = BoheomBackButton(navigationController)
     private let editPostButton = UIButton(type: .system).then {
@@ -53,7 +52,6 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
-        addChild(toastController)
     }
 
     override func addView() {
@@ -69,8 +67,7 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
         view.addSubviews(
             scrollView,
             backButton,
-            editPostButton,
-            toastController.view
+            editPostButton
         )
     }
 
@@ -177,7 +174,9 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
 
@@ -186,7 +185,9 @@ class PostDetailViewController: BaseVC<PostDetailViewModel> {
                 owner.applyButton.isHidden = !owner.isApplied
                 owner.applyCancelButton.isHidden = owner.isApplied
                 owner.isApplied.toggle()
-                owner.toastController.presentToast(with: message, type: .succees)
+                let toastView = BoheomToastyView(type: .succees)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }

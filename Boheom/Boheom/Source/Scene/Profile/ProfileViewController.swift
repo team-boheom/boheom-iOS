@@ -13,7 +13,6 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
     private let cancelApplyPost = PublishRelay<String>()
     private let uploadProfileImage = PublishRelay<Data>()
 
-    private let toastController = ToastViewController()
     private let photoPickerManager = ProfileImagePickerManager()
 
     private lazy var backButton = BoheomBackButton(self.navigationController)
@@ -92,7 +91,6 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
 
     override func attribute() {
         view.backgroundColor = .gray50
-        addChild(toastController)
     }
 
     override func addView() {
@@ -111,8 +109,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             backgroundView,
             scrollView,
             backButton,
-            editProfileButton,
-            toastController.view
+            editProfileButton
         )
     }
 
@@ -252,13 +249,17 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
 
         output.successMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .succees)
+                let toastView = BoheomToastyView(type: .succees)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }

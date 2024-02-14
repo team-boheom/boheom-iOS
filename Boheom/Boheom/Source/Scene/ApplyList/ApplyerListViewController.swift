@@ -20,9 +20,7 @@ class ApplyerListViewController: BaseVC<ApplyerListViewModel> {
         title: "신청한 사람이 보이지 않아요..!",
         subTitle: "지금 빨리 신청하여 첫 신청자가 되어보세요.",
         icon: .thinkingFace
-    ).then {
-        $0.isHidden = true
-    }
+    ).then { $0.isHidden = true }
 
     private let applyListTableView = UITableView().then {
         $0.contentInset = .init(top: 15, left: 0, bottom: 0, right: 0)

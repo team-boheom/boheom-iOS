@@ -12,7 +12,6 @@ class HomeViewController: BaseVC<HomeViewModel> {
     private let applyPost = PublishRelay<String>()
     private let cancelApplyPost = PublishRelay<String>()
 
-    private let toastController = ToastViewController()
 
     private let contentView = UIView().then {
         $0.backgroundColor = .gray50
@@ -73,7 +72,6 @@ class HomeViewController: BaseVC<HomeViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
-        addChild(toastController)
     }
 
     override func bind() {
@@ -144,13 +142,17 @@ class HomeViewController: BaseVC<HomeViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
 
         output.successMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .succees)
+                let toastView = BoheomToastyView(type: .succees)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }
@@ -166,7 +168,7 @@ class HomeViewController: BaseVC<HomeViewModel> {
             footerButton
         )
         homeScrollView.addSubview(contentView)
-        view.addSubviews(homeScrollView, floatingButton, toastController.view)
+        view.addSubviews(homeScrollView, floatingButton)
     }
 
     override func layout() {

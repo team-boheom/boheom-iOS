@@ -3,10 +3,9 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Toasty
 
 class LoginViewController: BaseVC<LoginViewModel> {
-
-    private let toastController = ToastViewController()
 
     private let headerLabel = LoginDynamicHeader()
     private let idTextField = BoheomTextField(title: "아이디", placeholder: "아이디를 입력하세요.")
@@ -21,7 +20,6 @@ class LoginViewController: BaseVC<LoginViewModel> {
     override func attribute() {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
-        addChild(toastController)
     }
 
     override func bind() {
@@ -35,7 +33,9 @@ class LoginViewController: BaseVC<LoginViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastyView = BoheomToastyView(type: .error)
+                toastyView.content = message
+                owner.toastController.present(with: toastyView)
             })
             .disposed(by: disposeBag)
     }
@@ -47,8 +47,7 @@ class LoginViewController: BaseVC<LoginViewModel> {
             passwordTextField,
             loginButton,
             signupMarkLabel,
-            signupButton,
-            toastController.view
+            signupButton
         )
     }
 

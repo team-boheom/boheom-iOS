@@ -8,7 +8,6 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
 
     private lazy var backButton = BoheomBackButton(navigationController)
 
-    private let toastController = ToastViewController()
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
@@ -27,7 +26,6 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
-        addChild(toastController)
         keyboardNotification()
     }
 
@@ -44,8 +42,7 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
         view.addSubviews(
             scrollView,
             backButton,
-            writeButton,
-            toastController.view
+            writeButton
         )
     }
 
@@ -110,7 +107,9 @@ class PostWriteViewController: BaseVC<PostWriteViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }

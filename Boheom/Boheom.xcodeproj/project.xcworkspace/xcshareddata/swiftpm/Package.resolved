@@ -89,6 +89,15 @@
         "revision" : "d41ef523faef0f911369f79c0b96815d9dbb6d7a",
         "version" : "3.0.0"
       }
+    },
+    {
+      "identity" : "toasty",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BJCHO0501/Toasty.git",
+      "state" : {
+        "revision" : "8e439bc95c4bf79bc219f579f0190b9fc8a3dfc8",
+        "version" : "0.0.1"
+      }
     }
   ],
   "version" : 2

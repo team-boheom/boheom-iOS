@@ -3,11 +3,13 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Toasty
 
 open class BaseVC<T: ViewModelType>: UIViewController {
 
     var disposeBag = DisposeBag()
     var viewModel: T
+    lazy var toastController = ToastyController(target: self)
 
     public init(viewModel: T) {
         self.viewModel = viewModel
@@ -28,6 +30,7 @@ open class BaseVC<T: ViewModelType>: UIViewController {
         super.viewDidLayoutSubviews()
         addView()
         layout()
+        view.addSubview(toastController.view)
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

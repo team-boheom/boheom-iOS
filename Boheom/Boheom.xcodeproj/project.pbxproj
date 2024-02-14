@@ -30,6 +30,8 @@
 		4B11818B2B53CF5800B1C04D /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1181822B53CF5800B1C04D /* Pretendard-Thin.otf */; };
 		4B11818C2B53CF5800B1C04D /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B1181832B53CF5800B1C04D /* Pretendard-ExtraBold.otf */; };
 		4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11818D2B53DA0100B1C04D /* UIFont+.swift */; };
+		4B76AA312B7CAE090044CDC3 /* Toasty in Frameworks */ = {isa = PBXBuildFile; productRef = 4B76AA302B7CAE090044CDC3 /* Toasty */; };
+		4B76AA332B7CAF150044CDC3 /* BoheomToastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76AA322B7CAF150044CDC3 /* BoheomToastyView.swift */; };
 		4B8A4CB52B53DF4D007F7A3F /* boheom-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */; };
 		4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */; };
 		4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */; };
@@ -94,8 +96,6 @@
 		4B8A4D642B5AB8C8007F7A3F /* CategoryListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D632B5AB8C8007F7A3F /* CategoryListViewCell.swift */; };
 		4B8A4D662B5AD69B007F7A3F /* CategoryCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D652B5AD69B007F7A3F /* CategoryCollectionLayout.swift */; };
 		4B8A4D682B5BE91E007F7A3F /* SignupUserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D672B5BE91E007F7A3F /* SignupUserInfoRequest.swift */; };
-		4B8A4D6B2B5BFA73007F7A3F /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D6A2B5BFA73007F7A3F /* ToastViewController.swift */; };
-		4B8A4D6E2B5C2531007F7A3F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D6D2B5C2531007F7A3F /* ToastView.swift */; };
 		4B8A4D722B5CFEB7007F7A3F /* InfoChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D712B5CFEB7007F7A3F /* InfoChecker.swift */; };
 		4B8A4D752B5D63C8007F7A3F /* SignupInfoStrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D742B5D63C8007F7A3F /* SignupInfoStrage.swift */; };
 		4B8A4D782B5D7E39007F7A3F /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4D772B5D7E39007F7A3F /* HapticManager.swift */; };
@@ -152,6 +152,7 @@
 		4B1181822B53CF5800B1C04D /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		4B1181832B53CF5800B1C04D /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		4B11818D2B53DA0100B1C04D /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		4B76AA322B7CAF150044CDC3 /* BoheomToastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomToastyView.swift; sourceTree = "<group>"; };
 		4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boheom-logo.png"; sourceTree = "<group>"; };
 		4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomStep.swift; sourceTree = "<group>"; };
 		4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
@@ -213,8 +214,6 @@
 		4B8A4D632B5AB8C8007F7A3F /* CategoryListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewCell.swift; sourceTree = "<group>"; };
 		4B8A4D652B5AD69B007F7A3F /* CategoryCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionLayout.swift; sourceTree = "<group>"; };
 		4B8A4D672B5BE91E007F7A3F /* SignupUserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUserInfoRequest.swift; sourceTree = "<group>"; };
-		4B8A4D6A2B5BFA73007F7A3F /* ToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
-		4B8A4D6D2B5C2531007F7A3F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		4B8A4D712B5CFEB7007F7A3F /* InfoChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoChecker.swift; sourceTree = "<group>"; };
 		4B8A4D742B5D63C8007F7A3F /* SignupInfoStrage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInfoStrage.swift; sourceTree = "<group>"; };
 		4B8A4D772B5D7E39007F7A3F /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -259,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B76AA312B7CAE090044CDC3 /* Toasty in Frameworks */,
 				4B8A4D4D2B5A448D007F7A3F /* Kingfisher in Frameworks */,
 				4B1181542B53A83B00B1C04D /* SnapKit in Frameworks */,
 				4B1181592B53A85900B1C04D /* Then in Frameworks */,
@@ -352,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				4BE00E732B63BC1E0023115A /* ApplyList */,
-				4B8A4D692B5BFA58007F7A3F /* Toast */,
 				4B8A4D502B5A860B007F7A3F /* Post */,
 				4B8A4D412B5A3E47007F7A3F /* Profile */,
 				4B8A4D2B2B58D91E007F7A3F /* Home */,
@@ -458,6 +457,7 @@
 				4B8A4D352B58E56F007F7A3F /* BoheomListHeader.swift */,
 				4B8A4D4E2B5A525C007F7A3F /* BoheomBackButton.swift */,
 				4BE00E792B6418020023115A /* BoheomPlaceholderView.swift */,
+				4B76AA322B7CAF150044CDC3 /* BoheomToastyView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -708,23 +708,6 @@
 				4B8A4D5C2B5A8786007F7A3F /* PostDetailHeaderView.swift */,
 				4BFF7AB52B5E9E6F009A8DC4 /* DatePicker */,
 				4BFF7AB42B5E9E61009A8DC4 /* Category */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
-		4B8A4D692B5BFA58007F7A3F /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				4B8A4D6C2B5C2523007F7A3F /* Component */,
-				4B8A4D6A2B5BFA73007F7A3F /* ToastViewController.swift */,
-			);
-			path = Toast;
-			sourceTree = "<group>";
-		};
-		4B8A4D6C2B5C2523007F7A3F /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				4B8A4D6D2B5C2531007F7A3F /* ToastView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -980,6 +963,7 @@
 				4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */,
 				4B8A4D252B5824C8007F7A3F /* Swinject */,
 				4B8A4D4C2B5A448D007F7A3F /* Kingfisher */,
+				4B76AA302B7CAE090044CDC3 /* Toasty */,
 			);
 			productName = Boheom;
 			productReference = 4B1181352B53A5A500B1C04D /* Boheom.app */;
@@ -1018,6 +1002,7 @@
 				4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				4B8A4D242B5824C8007F7A3F /* XCRemoteSwiftPackageReference "Swinject" */,
 				4B8A4D4B2B5A448D007F7A3F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4B76AA2F2B7CAE090044CDC3 /* XCRemoteSwiftPackageReference "Toasty" */,
 			);
 			productRefGroup = 4B1181362B53A5A500B1C04D /* Products */;
 			projectDirPath = "";
@@ -1076,7 +1061,6 @@
 				4BFF7AB72B5E9EBC009A8DC4 /* PostDatePickerView.swift in Sources */,
 				4B8A4CE22B550031007F7A3F /* BoheomTextField.swift in Sources */,
 				4B8A4CC52B5422F4007F7A3F /* BaseVC.swift in Sources */,
-				4B8A4D6E2B5C2531007F7A3F /* ToastView.swift in Sources */,
 				4B8A4D182B579D41007F7A3F /* LoginTokenEntity.swift in Sources */,
 				4BFF7AA72B5E5E2D009A8DC4 /* ProfileResponse.swift in Sources */,
 				4B8A4D2D2B58D937007F7A3F /* HomeViewController.swift in Sources */,
@@ -1129,7 +1113,6 @@
 				4B8A4D322B58D9D8007F7A3F /* HomeHeaderView.swift in Sources */,
 				4B8A4CCA2B542610007F7A3F /* OnBoardingViewModel.swift in Sources */,
 				4B8A4CFA2B56D19E007F7A3F /* BoheomAPI.swift in Sources */,
-				4B8A4D6B2B5BFA73007F7A3F /* ToastViewController.swift in Sources */,
 				4BE00E502B5F94510023115A /* PostListEntity.swift in Sources */,
 				4BE00E532B5F96CF0023115A /* FeedService.swift in Sources */,
 				4BFF7AA42B5E4653009A8DC4 /* UserService.swift in Sources */,
@@ -1154,6 +1137,7 @@
 				4B8A4D752B5D63C8007F7A3F /* SignupInfoStrage.swift in Sources */,
 				4BE00E6E2B62C13A0023115A /* ApplyerListEntity.swift in Sources */,
 				4B8A4CD22B542DC0007F7A3F /* BoheomButton.swift in Sources */,
+				4B76AA332B7CAF150044CDC3 /* BoheomToastyView.swift in Sources */,
 				4B8A4D3A2B58FF82007F7A3F /* UIView+setShadow.swift in Sources */,
 				4B8A4CFF2B56D921007F7A3F /* JWTPlugin.swift in Sources */,
 				4B8A4CCF2B542A11007F7A3F /* UIView+addSubviews.swift in Sources */,
@@ -1415,6 +1399,14 @@
 				minimumVersion = 2.13.0;
 			};
 		};
+		4B76AA2F2B7CAE090044CDC3 /* XCRemoteSwiftPackageReference "Toasty" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BJCHO0501/Toasty.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		4B8A4D082B56ED2C007F7A3F /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
@@ -1486,6 +1478,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B1181782B53A8A400B1C04D /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		4B76AA302B7CAE090044CDC3 /* Toasty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B76AA2F2B7CAE090044CDC3 /* XCRemoteSwiftPackageReference "Toasty" */;
+			productName = Toasty;
 		};
 		4B8A4D092B56ED2C007F7A3F /* SwiftKeychainWrapper */ = {
 			isa = XCSwiftPackageProductDependency;

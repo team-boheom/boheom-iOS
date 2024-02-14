@@ -8,7 +8,6 @@ class PostEditViewController: BaseVC<PostEditViewModel> {
 
     private lazy var backButton = BoheomBackButton(navigationController)
 
-    private let toastController = ToastViewController()
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
     }
@@ -27,7 +26,6 @@ class PostEditViewController: BaseVC<PostEditViewModel> {
 
     override func attribute() {
         view.backgroundColor = .white
-        addChild(toastController)
         keyboardNotification()
     }
 
@@ -41,7 +39,7 @@ class PostEditViewController: BaseVC<PostEditViewModel> {
             categoryTextField
         )
         scrollView.addSubview(contentView)
-        view.addSubviews(scrollView, backButton, editButton, toastController.view)
+        view.addSubviews(scrollView, backButton, editButton)
     }
 
     override func layout() {
@@ -105,7 +103,9 @@ class PostEditViewController: BaseVC<PostEditViewModel> {
 
         output.errorMessage.asObservable()
             .subscribe(with: self, onNext: { owner, message in
-                owner.toastController.presentToast(with: message, type: .error)
+                let toastView = BoheomToastyView(type: .error)
+                toastView.content = message
+                owner.toastController.present(with: toastView)
             })
             .disposed(by: disposeBag)
     }
