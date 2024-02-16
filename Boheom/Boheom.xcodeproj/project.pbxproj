@@ -32,6 +32,7 @@
 		4B11818E2B53DA0100B1C04D /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11818D2B53DA0100B1C04D /* UIFont+.swift */; };
 		4B76AA312B7CAE090044CDC3 /* Toasty in Frameworks */ = {isa = PBXBuildFile; productRef = 4B76AA302B7CAE090044CDC3 /* Toasty */; };
 		4B76AA332B7CAF150044CDC3 /* BoheomToastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76AA322B7CAF150044CDC3 /* BoheomToastyView.swift */; };
+		4B76AA352B7F56F40044CDC3 /* LogoutAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76AA342B7F56F40044CDC3 /* LogoutAlert.swift */; };
 		4B8A4CB52B53DF4D007F7A3F /* boheom-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */; };
 		4B8A4CB92B53E1DF007F7A3F /* BoheomStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */; };
 		4B8A4CBC2B541AED007F7A3F /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */; };
@@ -153,6 +154,7 @@
 		4B1181832B53CF5800B1C04D /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		4B11818D2B53DA0100B1C04D /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4B76AA322B7CAF150044CDC3 /* BoheomToastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomToastyView.swift; sourceTree = "<group>"; };
+		4B76AA342B7F56F40044CDC3 /* LogoutAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAlert.swift; sourceTree = "<group>"; };
 		4B8A4CB42B53DF4D007F7A3F /* boheom-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boheom-logo.png"; sourceTree = "<group>"; };
 		4B8A4CB82B53E1DF007F7A3F /* BoheomStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoheomStep.swift; sourceTree = "<group>"; };
 		4B8A4CBB2B541AED007F7A3F /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				4B8A4D472B5A404B007F7A3F /* ProfileBackgroundView.swift */,
 				4B8A4D492B5A4237007F7A3F /* ProfileHeaderView.swift */,
 				4BE00E7B2B64E4330023115A /* ProfileImagePickerManager.swift */,
+				4B76AA342B7F56F40044CDC3 /* LogoutAlert.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1097,6 +1100,7 @@
 				4B8A4CEC2B5672B9007F7A3F /* SignupPasswordViewController.swift in Sources */,
 				4BE00E5E2B5FD1D70023115A /* DateFormatIndicated.swift in Sources */,
 				4BE00E6A2B62C0F50023115A /* ApplyerListResponse.swift in Sources */,
+				4B76AA352B7F56F40044CDC3 /* LogoutAlert.swift in Sources */,
 				4BE00E582B5FC1240023115A /* HomeFloatingButton.swift in Sources */,
 				4B8A4CDD2B54F861007F7A3F /* LoginViewModel.swift in Sources */,
 				4BE00E442B5F89D20023115A /* PostEntity.swift in Sources */,

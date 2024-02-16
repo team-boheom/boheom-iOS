@@ -32,6 +32,8 @@ class HomeFlow: Flow {
             return presentToApplyerListScreen(postID: postID)
         case .postEditIsRequired(let postID, let originData):
             return presentToEditPostScreen(postID: postID, originData: originData)
+        case .onBoardingIsRequired:
+            return presentToOnBoardingScreen()
         default:
             return .none
         }
@@ -99,6 +101,12 @@ class HomeFlow: Flow {
             withNextPresentable: editPostVC,
             withNextStepper: editPostVC.viewModel
         ))
+    }
+
+    private func presentToOnBoardingScreen() -> FlowContributors {
+        JWTTokenStorage.shared.removeToken()
+        KeychainStorage.shared.removeUserInfo()
+        return .end(forwardToParentFlowWithStep: BoheomStep.onBoardingIsRequired)
     }
 
     private func navigateToBack() -> FlowContributors {

@@ -12,6 +12,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
     private let applyPost = PublishRelay<String>()
     private let cancelApplyPost = PublishRelay<String>()
     private let uploadProfileImage = PublishRelay<Data>()
+    private let logoutAccount = PublishRelay<Void>()
 
     private let photoPickerManager = ProfileImagePickerManager()
 
@@ -85,6 +86,10 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         $0.isHidden = true
     }
 
+    private let accountHeaderView = BoheomListHeader(title: "계정 ⚙️", isShowNavigate: false)
+    private let logoutButton = BoheomButton(text: "로그아웃", font: .bodyB2SemiBold, pointColor: .extraRed, type: .fill)
+    private lazy var logoutAlert = LogoutAlert() { self.logoutAccount.accept(()) }
+
     override func viewWillAppear(_ animated: Bool) {
         fetchProfile.accept(())
     }
@@ -101,7 +106,9 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             myApplyPostHeaderView,
             myApplyPostCollectionView,
             myPostPlaceholder,
-            myApplyPostPlaceholder
+            myApplyPostPlaceholder,
+            accountHeaderView,
+            logoutButton
         )
         scrollContentView.addSubview(contentView)
         scrollView.addSubview(scrollContentView)
@@ -132,7 +139,7 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         }
         scrollContentView.snp.makeConstraints {
             $0.top.width.equalToSuperview()
-            $0.bottom.greaterThanOrEqualTo(myApplyPostCollectionView)
+            $0.bottom.greaterThanOrEqualTo(logoutButton)
             $0.bottom.equalToSuperview()
         }
         contentView.snp.makeConstraints {
@@ -161,7 +168,6 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
         myApplyPostHeaderView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.top.equalTo(myPostCollectionView.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(16)
         }
         myApplyPostCollectionView.snp.makeConstraints {
             $0.top.equalTo(myApplyPostHeaderView.snp.bottom).offset(10)
@@ -173,6 +179,15 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             $0.top.equalTo(myApplyPostHeaderView.snp.bottom).offset(14)
             $0.centerX.equalToSuperview()
         }
+        accountHeaderView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(myApplyPostCollectionView.snp.bottom).offset(20)
+        }
+        logoutButton.snp.makeConstraints {
+            $0.height.equalTo(35)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(accountHeaderView.snp.bottom).offset(10)
+        }
     }
 
     override func bind() {
@@ -181,7 +196,8 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
             applySignal: applyPost.asObservable(),
             cancelApplySignal: cancelApplyPost.asObservable(),
             navigateDetailSignal: navigetToDetail.asObservable(),
-            uploadImageSignal: uploadProfileImage.asObservable()
+            uploadImageSignal: uploadProfileImage.asObservable(),
+            logoutSignal: logoutAccount.asObservable()
         )
         let output = viewModel.transform(input: input)
 
@@ -260,6 +276,12 @@ class ProfileViewController: BaseVC<ProfileViewModel> {
                 let toastView = BoheomToastyView(type: .succees)
                 toastView.content = message
                 owner.toastController.present(with: toastView)
+            })
+            .disposed(by: disposeBag)
+
+        logoutButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.present(owner.logoutAlert, animated: true)
             })
             .disposed(by: disposeBag)
     }

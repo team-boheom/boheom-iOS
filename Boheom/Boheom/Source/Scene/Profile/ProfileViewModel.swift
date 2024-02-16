@@ -31,6 +31,7 @@ class ProfileViewModel: ViewModelType, Stepper {
         let cancelApplySignal: Observable<String>
         let navigateDetailSignal: Observable<String>
         let uploadImageSignal: Observable<Data>
+        let logoutSignal: Observable<Void>
     }
 
     struct Output {
@@ -131,6 +132,11 @@ class ProfileViewModel: ViewModelType, Stepper {
                 owner.changePostValue(postID: data.postID)
                 successMessage.accept(data.message)
             })
+            .disposed(by: disposeBag)
+
+        input.logoutSignal
+            .map { BoheomStep.onBoardingIsRequired }
+            .bind(to: steps)
             .disposed(by: disposeBag)
 
         return Output(
